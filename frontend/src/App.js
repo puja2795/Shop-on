@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { MainRoute } from './Pages/MainRoute';
+import { MainRoute } from './Routes/MainRoute';
+
 
 function App() {
   return (
