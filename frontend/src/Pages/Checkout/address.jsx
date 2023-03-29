@@ -19,7 +19,6 @@ export const Address = () => {
   <p>pincode</p>
   <p>number</p>
   <button>Edit</button>
-
   <button>Dilever to this address</button>
 </div>
 
