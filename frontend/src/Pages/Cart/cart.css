@@ -6,7 +6,7 @@
     height: 80px;
     background-color: white;
     /* justify-content: space-around; */
-    gap: 20%;
+    /* gap: 20%; */
     align-items: center;
     box-shadow: rgba(253, 123, 123, 0.16) 0px 1px 4px;
 }
