@@ -1,10 +1,10 @@
 import React from 'react'
 import { Layout } from '../../Components/Container/Layout'
 
-export const Product = () => {
+export const AllProduct = () => {
   return (
     <Layout>
-        <div>Product</div>
+        <div>AllProduct</div>
     </Layout>
   )
 }
