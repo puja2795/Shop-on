@@ -1,0 +1,20 @@
+.subnav {
+    display: flex;
+    height: 52px;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: space-between;
+    padding: 0 80px;
+    border: 2px solid #EDE8E8;
+}
+
+.subItem {
+    height: 100%;
+    padding: 10px;
+}
+
+.subItem:hover {
+    color: #f43296;
+    /* text-decoration: underline; */
+    border-bottom: 3px solid #f43296;
+}
