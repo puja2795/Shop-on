@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Cart } from './Cart/Cart'
-import { Address } from './Checkout/address'
-import { Payment } from './Checkout/payment'
-import { Home } from './Home'
+import { Cart } from '../Pages/Cart/Cart'
+import { Address } from '../Pages/Checkout/address'
+import { Payment } from '../Pages/Checkout/payment'
+import { Home } from '../Pages/Home'
 
 export const MainRoute = () => {
   return (

@@ -3,6 +3,7 @@ import React from 'react'
 
 import '../Cart/cart.css'
 import { CartNavbar } from '../../Components/CartNavbar'
+import { Spacer } from '@chakra-ui/react'
 
 export const Address = () => {
   return (
