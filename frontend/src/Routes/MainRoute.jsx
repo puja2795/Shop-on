@@ -4,6 +4,7 @@ import { Cart } from '../Pages/Cart/Cart'
 import { Address } from '../Pages/Checkout/address'
 import { Payment } from '../Pages/Checkout/payment'
 import { Home } from '../Pages/Home'
+import { AllProduct } from '../Pages/Product/AllProduct'
 
 export const MainRoute = () => {
   return (
@@ -12,7 +13,7 @@ export const MainRoute = () => {
         <Route path ="/cart" element={<Cart/>} />
         <Route path ="/checkout/address" element={<Address/>} />
         <Route path ="/checkout/payment" element={<Payment/>} />
-        
+        <Route path="/products" element={<AllProduct />} />
     </Routes>
   )
 }
