@@ -4,12 +4,13 @@ import { Image, Text } from '@chakra-ui/react'
 import SearchBar from "./SearchBar";
 import {FaMobileAlt, FaRegUser} from "react-icons/fa"
 import {BiCart} from "react-icons/bi"
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logoDiv}>
-        <Image h="38px" src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png" />
+        <Link to="/"><Image h="38px" src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png" /></Link>
         <SearchBar />
       </div>
       <div className={styles["profile-div"]}>
