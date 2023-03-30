@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Cart } from '../Pages/Cart/Cart'
 import { Address } from '../Pages/Checkout/address'
 import { Payment } from '../Pages/Checkout/payment'
-import { Home } from '../Pages/Home'
+import { Home } from '../Pages/Home/Home'
 import { AllProduct } from '../Pages/Product/AllProduct'
 
 export const MainRoute = () => {

@@ -23,3 +23,29 @@
     /* text-decoration: underline; */
     border-bottom: 3px solid #f43296;
 }
+
+.subsubnav {
+    width: calc(100% - 160px);
+    margin-top: 122px;
+    display: flex;
+    gap: 20px;
+    border: 2px solid #EDE8E8;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: white;
+}
+
+.submenuHead {
+    color: #f43296;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.submenu {
+   background-color: #EDE8E8;
+   z-index: 20;
+}
