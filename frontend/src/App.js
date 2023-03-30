@@ -7,8 +7,8 @@ import { Subnav } from './Components/Navbar/Subnav';
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Subnav />
+      {/* <Navbar /> */}
+      {/* <Subnav /> */}
       <MainRoute/>
     </div>
   );
