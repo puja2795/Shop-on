@@ -3,10 +3,16 @@ import React from 'react'
 import { Layout } from '../../Components/Container/Layout'
 import styles from "./Home.module.css"
 import { Heading, Image } from '@chakra-ui/react'
+import Navbar from '../../Components/Navbar/Navbar'
+import Footer from '../../Components/Footer/Footer'
+import { Subnav } from '../../Components/Navbar/Subnav'
 
 export const Home = () => {
   return (
-    <Layout>
+    <>
+    <Navbar />
+      <Subnav />
+      <Layout>
       <div className={styles["main-div"]}>
         <Image className={styles.imageClass} src='https://meesho-clone-ashokprjapati.vercel.app/header1.png'></Image>
         <Heading as='h2' size='2xl'>
@@ -17,5 +23,8 @@ export const Home = () => {
         <Image className={styles.imageClass} src='https://meesho-clone-ashokprjapati.vercel.app/lastheader.png'></Image>
       </div>
     </Layout>
+    <Footer />
+    </>
+    
   )
 }
