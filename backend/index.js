@@ -1,19 +1,21 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-const {connection} = require("./config/db");
-const {userRouter} = require("./routes/user.route");
+const { connection } = require("./config/db");
+const { userRouter } = require("./routes/user.route");
+const { productRouter } = require("./routes/product.route");
 
 const app = express();
 
-app.options("*",cors());
+app.options("*", cors());
 app.use(express.json());
-app.use(cors({origin:"*"}));
+app.use(cors({ origin: "*" }));
 
-app.use("/user",userRouter);
+app.use("/user", userRouter);
+app.use("/product", productRouter);
 
 
-app.listen(process.env.port, async()=>{
+app.listen(process.env.port, async () => {
     try {
         await connection;
         console.log("Connected to database");
