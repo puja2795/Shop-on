@@ -11,6 +11,7 @@
     position: fixed;
     margin-top: 72px;
     background-color: white;
+    z-index: 30;
 }
 
 .subItem {
@@ -35,6 +36,7 @@
     left: 50%;
     transform: translate(-50%);
     background-color: white;
+    z-index: 30;
 }
 
 .submenuHead {
@@ -47,5 +49,4 @@
 
 .submenu {
    background-color: #EDE8E8;
-   z-index: 20;
 }
