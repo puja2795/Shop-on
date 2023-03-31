@@ -13,13 +13,13 @@ import { FcNext } from "react-icons/fc";
 
 export const Home = () => {
   const [data,setData] = useState([])
-  let limit = 8;
+  let limit = 12;
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0);
   const [perPageProds, setPerPageProds] = useState([]);
   const [showBtns, setShowBtns] = useState([]);
   const [startBtn, setStartBtn] = useState(1);
-  const [endBtn, setEndBtn] = useState(3);
+  const [endBtn, setEndBtn] = useState(6);
 
   const makeListFunc = () => {
     let lis = [];
@@ -36,13 +36,13 @@ export const Home = () => {
   useEffect(() => {
     let end = limit * page;
     let start = end - limit;
-    console.log(start, end);
     setPerPageProds(data.slice(start, end));
-  }, [page]);
+    
+  }, [data, page]);
 
   useEffect(() => {
     setNumPages(Math.ceil(data.length / limit));
-  }, []);
+  }, [data]);
 
   const pageHandler = (value) => {
     setPage(value);
@@ -50,7 +50,7 @@ export const Home = () => {
 
   const nextHandler = () => {
     setPage(page + 1);
-    if (page >= 5) {
+    if (page >= 6) {
       setStartBtn(startBtn + 1);
       setEndBtn(endBtn + 1);
     }
@@ -58,7 +58,7 @@ export const Home = () => {
 
   const prevHandler = () => {
     setPage(page - 1);
-    if (page > 5) {
+    if (page > 6) {
       setStartBtn(startBtn - 1);
       setEndBtn(endBtn - 1);
     }
@@ -92,45 +92,45 @@ export const Home = () => {
           </Heading>
           <div className={styles.gridDiv}>
             <Grid templateColumns='repeat(4, 1fr)' gap={6} margin={"20px"}>
-              {data?.map((el) => {
+              {perPageProds?.map((el) => {
                 return (
                   <HomeSingleProduct el={el}/>
                 )
               })}
             </Grid>
-            <Container maxW={"5xl"} gap={5} m={{base:'1rem 11%',md:"2rem 35%"}}>
-            <Button
-              colorScheme="teal"
-              variant="outline"
-              onClick={prevHandler}
-              isDisabled={page == 1}
-            >
-              <FcPrevious color="#fc2779" />
-            </Button>
-            {showBtns.map((el) => {
-              return (
-                <Button
-                  backgroundColor={page == el ? "#fc2779" : "gray"}
-                  borderRadius="50%"
-                  color="white"
-                  key={el}
-                  onClick={() => {
-                    pageHandler(el);
-                  }}
-                >
-                  {el}
-                </Button>
-              );
-            })}
+            <Container maxW={"md"} gap={6} m={{base:'1rem 11%',md:"2rem 35%"}} >
+              <Button
+                colorScheme="teal"
+                variant="outline"
+                onClick={prevHandler}
+                isDisabled={page == 1}
+              >
+                <FcPrevious color="#fc2779" />
+              </Button>
+              {showBtns.map((el) => {
+                return (
+                  <Button
+                    backgroundColor={page == el ? "#fc2779" : "gray"}
+                    borderRadius="50%"
+                    color="white"
+                    key={el}
+                    onClick={() => {
+                      pageHandler(el);
+                    }}
+                  >
+                    {el}
+                  </Button>
+                );
+              })}
 
-            <Button
-              colorScheme="teal"
-              variant="outline"
-              onClick={nextHandler}
-              isDisabled={endBtn == numPages}
-            >
-              <FcNext color="#fc2779" />
-            </Button>
+              <Button
+                colorScheme="teal"
+                variant="outline"
+                onClick={nextHandler}
+                isDisabled={endBtn == numPages}
+              >
+                <FcNext color="#fc2779" />
+              </Button>
           </Container>
           </div> 
       </Layout>   

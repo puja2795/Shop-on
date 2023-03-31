@@ -6,6 +6,7 @@ import { Address } from '../Pages/Checkout/address'
 import { Payment } from '../Pages/Checkout/payment'
 import { Home } from '../Pages/Home/Home'
 import { AllProduct } from '../Pages/Product/AllProduct'
+import { WomenSweater } from '../Pages/Product/WomenSweater'
 
 export const MainRoute = () => {
   return (
@@ -16,7 +17,7 @@ export const MainRoute = () => {
       <Route path="/checkout/payment" element={<Payment />} />
       <Route path="/products" element={<AllProduct />} />
       <Route path="/admin" element={<AdminPage />} />
-
+      <Route path='/womenSweater' element={<WomenSweater />}/>
     </Routes>
   )
 }
