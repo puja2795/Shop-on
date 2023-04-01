@@ -1,5 +1,5 @@
 const { UserModel } = require("../model/user.model");
-const {CartModel} = require("../model/cart.model");
+const { CartModel } = require("../model/cart.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
