@@ -1,16 +1,13 @@
 .layoutSide {
-    padding: 0 150px 0 90px;
+    width: 82%;
+    margin: auto;
 }
 
 .filterDiv{
-    width: 30%;
+    width: 25%;
     height: 84vh;
-    padding-left: 12px;
-    padding-top: 10px;
 }
 
 .childrenDiv {
-    padding: 5px;
     width: 100%;
-    border: 1px solid rgb(179, 176, 176);
 }

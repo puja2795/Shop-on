@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import DATA from "./navbardata.json";
-import { setSelectedCategory } from "../../Redux/productReducer/action";
+import { setProductFor } from "../../Redux/productReducer/action";
 
 export const Subnav = () => {
   const [showSubMenu, setShowSubMenu] = useState(false);
@@ -13,7 +13,7 @@ export const Subnav = () => {
   const navigate = useNavigate();
 
   const onSelectCategory = (category) => {
-    dispatch(setSelectedCategory(category));
+    dispatch(setProductFor(category));
     navigate("/products");
   };
 
@@ -30,7 +30,7 @@ export const Subnav = () => {
                 setShowSubMenu(true);
                 setSelectedData(el);
               }}
-              onClick={() => onSelectCategory(el)}
+              onClick={() => onSelectCategory(el.key)}
             >
               {el.name}
             </div>
@@ -48,6 +48,7 @@ export const Subnav = () => {
           {selectedData?.items.map((el, ind) => {
             return (
               <div
+                key={ind}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -66,7 +67,7 @@ export const Subnav = () => {
                 >
                   {el.subitems.map((subel, subelInd) => {
                     return (
-                      <Link to={"/products"}>
+                      <Link to={"/products"} key={subelInd}>
                         <div>{subel.item}</div>
                       </Link>
                     );
