@@ -37,14 +37,14 @@ export const WomenSweater = () => {
                         <Checkbox size='md' colorScheme='pink' >
                             Fleence
                         </Checkbox>
-                        <Checkbox size='md' colorScheme='pink' >
-                            Acrylic
-                        </Checkbox>
-                        <Checkbox size='md' colorScheme='pink' >
-                            Poly Cotton
-                        </Checkbox>
-                        <Checkbox size='md' colorScheme='pink' >
-                            Cotton Blend
+        <Checkbox size='md' colorScheme='pink' >
+            Acrylic
+        </Checkbox>
+        <Checkbox size='md' colorScheme='pink' >
+            Poly Cotton
+        </Checkbox>
+        <Checkbox size='md' colorScheme='pink' >
+            Cotton Blend
                         </Checkbox>
                     </Stack>
                     <Stack>
