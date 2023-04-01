@@ -76,14 +76,19 @@ const getProducts = async (req, res) => {
             res.status(200).send(products);
         }
         else {
-            const updatedData = products.map((prod) => {
-                cart.items.map((item) => {
-                    if (prod._id == item.productID) {
-                        prod.addedQuantity = item.quantity;
-                    }
+            if(cart.items.length !== 0){
+                const updatedData = products.map((prod) => {
+                    cart.items.map((item) => {
+                        if (prod._id == item.productID) {
+                            prod.addedQuantity = item.quantity;
+                        }
+                    })
                 })
-            })
-            res.status(200).send(updatedData);
+                res.status(200).send(updatedData);
+            }
+            else{
+                res.status(200).send(products);                
+            }
         }
 
     } catch (error) {
