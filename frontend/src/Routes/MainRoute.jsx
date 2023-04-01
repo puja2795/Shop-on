@@ -6,6 +6,7 @@ import Favourites from '../Admin/Pages/Favourites'
 import Settings from '../Admin/Pages/Settings'
 import Store from '../Admin/Pages/Store'
 import { Cart } from '../Pages/Cart/Cart'
+import { Edit } from '../Pages/Cart/Edit'
 import { Address } from '../Pages/Checkout/address'
 import { Payment } from '../Pages/Checkout/payment'
 import { Home } from '../Pages/Home/Home'
@@ -20,7 +21,12 @@ export const MainRoute = () => {
       <Route path="/checkout/address" element={<Address />} />
       <Route path="/checkout/payment" element={<Payment />} />
       <Route path="/products" element={<AllProduct />} />
+
+      <Route path="/admin" element={<AdminPage />} />
+
+
       <Route path='/womenSweater' element={<WomenSweater />} />
+
 
       {/* Admin Routes */}
       <Route path='/dashboard' element={<Dashboard />} />
