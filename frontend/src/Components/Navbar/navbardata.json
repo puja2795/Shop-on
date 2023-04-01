@@ -103,7 +103,8 @@
           "subname": "Suits & Dress Material"
         }
       ],
-      "name": "Women Ethnic"
+      "name": "Women Ethnic",
+      "key": ""
     },
     {
       "items": [
@@ -192,7 +193,8 @@
           "subname": "Innerwear"
         }
       ],
-      "name": "Women Western"
+      "name": "Women Western",
+      "key": "women"
     },
     {
       "items": [
@@ -311,7 +313,8 @@
           "subname": "Ethnic Wear"
         }
       ],
-      "name": "Men"
+      "name": "Men",
+      "key": "men"
     },
     {
       "items": [
@@ -372,7 +375,8 @@
           "subname": "Toys & Accessories"
         }
       ],
-      "name": "Kids"
+      "name": "Kids",
+      "key": "kids"
     },
     {
       "items": [

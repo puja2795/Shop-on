@@ -1,0 +1,40 @@
+.main-div{
+    border: 1px solid rgb(240, 240, 240);
+    padding: 0 20px 35px 20px;
+    text-align: left;
+    border-radius: 10px;
+}
+
+.divImage{
+    width: 100%;
+    height: 250px;
+}
+
+.divButton{
+    background-color: #028d62;
+    border-radius: 16px;
+    padding: 4px 8px;
+    color: white;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.divRating{
+    display: flex;
+    padding-top: 10px;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.freeD {
+    color: rgb(102, 102, 102);
+    background: rgb(249, 249, 249);
+    padding: 4px 8px;
+    border-radius: 48px;
+    display: inline-flex;
+    font-size: 12px;
+    width: fit-content;
+    font-weight: 600;
+}
