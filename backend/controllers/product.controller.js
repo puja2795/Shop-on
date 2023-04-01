@@ -24,89 +24,87 @@ const addAllProducts = async (req, res) => {
 const getProducts = async (req, res) => {
     const { price, rating, fabric, sleeveLength, pattern, reviews, category, productFor, page = 1, limit = 10, sort } = req.query;
     const filters = {};
-  
+
     if (price) {
-      if (price.includes('-')) {
-        const [minPrice, maxPrice] = price.split('-');
-        filters.price = {
-          $gte: Number(minPrice),
-          $lte: Number(maxPrice)
-        };
-      } else {
-        const maxPrice = Number(price);
-        filters.price = {
-          $lte: maxPrice
-        };
-      }
-    }
-  
-    if (rating) {
-      filters.rating = { $gte: Number(rating) };
-    }
-  
-    if (fabric) {
-      filters.fabric = fabric;
-    }
-  
-    if (sleeveLength) {
-      filters.sleeveLength = sleeveLength;
-    }
-  
-    if (pattern) {
-      filters.pattern = pattern;
-    }
-  
-    if (category) {
-      filters.category = category;
-    }
-  
-    if (productFor) {
-      filters.productFor = productFor;
-    }
-  
-    console.log(filters);
-  
-    try {
-      const sortOptions = {};
-      if (sort === 'asc') {
-        sortOptions.price = 1;
-      } else if (sort === 'desc') {
-        sortOptions.price = -1;
-      }
-  
-      const products = await ProductModel.find(filters).sort(sortOptions).skip((page - 1) * limit).limit(limit);
-      const token = req.headers.authorization?.split(" ")[1];
-  
-      if (!token) {
-        // return products if user is not logged in
-        return res.status(200).send(products);
-      }
-  
-      const decoded = jwt.verify(token, "my_signature");
-      const cart = await CartModel.findOne({ "userID": decoded.userID });
-  
-      if (!cart || cart.items.length === 0) {
-        // return products if user is logged in but has no items in cart
-        return res.status(200).send(products);
-      }
-  
-      // update products with added quantity if user is logged in and has items in cart
-      const updatedData = products.map((prod) => {
-        const cartItem = cart.items.find((item) => String(item.productID) === String(prod._id));
-        if (cartItem) {
-          prod.addedQuantity = cartItem.quantity;
+        if (price.includes('-')) {
+            const [minPrice, maxPrice] = price.split('-');
+            filters.price = {
+                $gte: Number(minPrice),
+                $lte: Number(maxPrice)
+            };
+        } else {
+            const maxPrice = Number(price);
+            filters.price = {
+                $lte: maxPrice
+            };
         }
-        return prod;
-      });
-  
-      return res.status(200).send(updatedData);
-  
+    }
+
+    if (rating) {
+        filters.rating = { $gte: Number(rating) };
+    }
+
+    if (fabric) {
+        filters.fabric = fabric;
+    }
+
+    if (sleeveLength) {
+        filters.sleeveLength = sleeveLength;
+    }
+
+    if (pattern) {
+        filters.pattern = pattern;
+    }
+
+    if (category) {
+        filters.category = category;
+    }
+
+    if (productFor) {
+        filters.productFor = productFor;
+    }
+
+    console.log(filters);
+
+    try {
+        const sortOptions = {};
+        if (sort === 'asc') {
+            sortOptions.price = 1;
+        } else if (sort === 'desc') {
+            sortOptions.price = -1;
+        }
+
+        const products = await ProductModel.find(filters).sort(sortOptions).skip((page - 1) * limit).limit(limit);
+        const token = req.headers.authorization?.split(" ")[1];
+
+        if (!token) {
+            // return products if user is not logged in
+            return res.status(200).send(products);
+        }
+
+        const decoded = jwt.verify(token, "my_signature");
+        const cart = await CartModel.findOne({ "userID": decoded.userID });
+
+        if (!cart || cart.items.length === 0) {
+            // return products if user is logged in but has no items in cart
+            return res.status(200).send(products);
+        }
+
+        // update products with added quantity if user is logged in and has items in cart
+        const updatedData = products.map((prod) => {
+            const cartItem = cart.items.find((item) => String(item.productID) === String(prod._id));
+            if (cartItem) {
+                prod.addedQuantity = cartItem.quantity;
+            }
+            return prod;
+        });
+
+        return res.status(200).send(updatedData);
+
     } catch (error) {
-      return res.status(400).send({ "msg": error.message });
+        return res.status(400).send({ "msg": error.message });
     }
 }
-  
-
 
 // Get single product data
 const getSingleProduct = async (req, res) => {
@@ -149,9 +147,5 @@ const updateProductData = async (req, res) => {
         res.status(400).send({ "msg": error.message });
     }
 }
-
-
-
-
 
 module.exports = { addAllProducts, getProducts, getSingleProduct, updateProductData };
