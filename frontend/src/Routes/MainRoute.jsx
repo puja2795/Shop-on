@@ -1,6 +1,10 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import AdminPage from '../Admin/AdminPage'
+import AddProduct from '../Admin/Pages/AddProduct'
+import Dashboard from '../Admin/Pages/Dashboard'
+import Favourites from '../Admin/Pages/Favourites'
+import Settings from '../Admin/Pages/Settings'
+import Store from '../Admin/Pages/Store'
 import { Cart } from '../Pages/Cart/Cart'
 import { Address } from '../Pages/Checkout/address'
 import { Payment } from '../Pages/Checkout/payment'
@@ -16,8 +20,14 @@ export const MainRoute = () => {
       <Route path="/checkout/address" element={<Address />} />
       <Route path="/checkout/payment" element={<Payment />} />
       <Route path="/products" element={<AllProduct />} />
-      <Route path="/admin" element={<AdminPage />} />
-      <Route path='/womenSweater' element={<WomenSweater />}/>
+      <Route path='/womenSweater' element={<WomenSweater />} />
+
+      {/* Admin Routes */}
+      <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/store' element={<Store />} />
+      <Route path='/add-products' element={<AddProduct />} />
+      <Route path='/favourites' element={<Favourites />} />
+      <Route path='/settings' element={<Settings />} />
     </Routes>
   )
 }

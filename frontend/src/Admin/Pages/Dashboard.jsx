@@ -1,8 +1,14 @@
+import { Box } from '@chakra-ui/react'
 import React from 'react'
+import AdminSidebar from '../Components/AdminSidebar'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <AdminSidebar>
+      <Box w="100%" h="2000px" border={"1px solid red"}>
+        <h1>Dasboard</h1>
+      </Box>
+    </AdminSidebar>
   )
 }
 
