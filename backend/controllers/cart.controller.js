@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 
 // Get cart data
-const getCartData = async (req,res) => {
+const getCartData = async (req, res) => {
     const { prodID } = req.params;
     const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, "my_signature");
@@ -34,4 +34,4 @@ const deleteFromCart = async (req, res) => {
 
 }
 
-module.exports = {getCartData, deleteFromCart };
+module.exports = { getCartData, deleteFromCart };
