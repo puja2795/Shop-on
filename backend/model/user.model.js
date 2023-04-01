@@ -6,7 +6,12 @@ const userSchema = mongoose.Schema({
     email: String,
     password: String,
     cartID: ObjectId,
-    address : String
+    address : [{
+        city : String,
+        state: String,
+        pincode: Number,
+        contact: Number
+    }]
 }, {
     versionKey: false
 })
