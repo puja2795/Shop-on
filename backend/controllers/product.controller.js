@@ -20,11 +20,11 @@ const addAllProducts = async (req, res) => {
     }
 }
 
-
 // get products data
 const getProducts = async (req, res) => {
     const { price, rating, fabric, sleeveLength, pattern, reviews, category, productFor } = req.query;
     const filters = {};
+
     if (price) {
         if (price.includes('-')) {
             const [minPrice, maxPrice] = price.split('-');
@@ -39,58 +39,105 @@ const getProducts = async (req, res) => {
             };
         }
     }
+
     if (rating) {
-        filters.rating = { $gte: Number(rating)};
+        filters.rating = { $gte: Number(rating) };
     }
+
     if (fabric) {
         filters.fabric = fabric;
     }
+
     if (sleeveLength) {
         filters.sleeveLength = sleeveLength;
     }
+
     if (pattern) {
         filters.pattern = pattern;
     }
-    // if (reviews) {
-    //   filters.reviews = {
-    //     $gte: Number(reviews)
-    //   };
-    // }
+
     if (category) {
         filters.category = category;
     }
+
     if (productFor) {
         filters.productFor = productFor;
     }
-    console.log(filters)
+
+    console.log(filters);
+
     try {
         const products = await ProductModel.find(filters);
-
-        const token = req.headers.authorization.split(" ")[1];
-        // console.log("token", token)
+        const token = req.headers.authorization?.split(" ")[1];
+    
+        if (!token) {
+          // return products if user is not logged in
+          return res.status(200).send(products);
+        }
+    
         const decoded = jwt.verify(token, "my_signature");
-        // console.log("decoded", decoded)
-
         const cart = await CartModel.findOne({ "userID": decoded.userID });
-        if (!cart) {
-            res.status(200).send(products);
+    
+        if (!cart || cart.items.length === 0) {
+          // return products if user is logged in but has no items in cart
+          return res.status(200).send(products);
         }
-        else {
-            if(cart.items.length !== 0){
-                const updatedData = products.map((prod) => {
-                    cart.items.map((item) => {
-                        if (prod._id == item.productID) {
-                            prod.addedQuantity = item.quantity;
-                        }
-                    })
-                })
-                res.status(200).send(updatedData);
-            }
-            else{
-                res.status(200).send(products);                
-            }
-        }
+    
+        // update products with added quantity if user is logged in and has items in cart
+        const updatedData = products.map((prod) => {
+          const cartItem = cart.items.find((item) => String(item.productID) === String(prod._id));
+          if (cartItem) {
+            prod.addedQuantity = cartItem.quantity;
+          }
+          return prod;
+        });
+    
+        return res.status(200).send(updatedData);
+    
+      } catch (error) {
+        return res.status(400).send({ "msg": error.message });
+      }
+}
 
+
+// Get single product data
+const getSingleProduct = async (req, res) => {
+    const { prodID } = req.params;
+    const token = req.headers.authorization?.split(" ")[1];
+    const cart = token ? await CartModel.findOne({ "userID": jwt.verify(token, "my_signature").userID }) : null;
+    try {
+      const product = await ProductModel.findOne({ _id: prodID });
+      const cartItem = cart?.items.find(elem => elem.prodID === prodID);
+      console.log(cartItem)
+      if (cartItem) {
+        product.addedQuantity = cartItem.quantity;
+      }
+      res.status(200).send(product);
+    } catch (error) {
+      res.status(400).send({ "msg": error.message });
+    }
+  }
+  
+
+// add/ remove from cart
+const updateProductData = async (req, res) => {
+    const { _id, addedQuantity } = req.body;
+    const token = req.headers.authorization.split(" ")[1];
+    const decoded = jwt.verify(token, "my_signature");
+    const cart = await CartModel.findOne({ "userID": decoded.userID });
+    try {
+        const product = await ProductModel.findOne({ _id });
+        product.addedQuantity = addedQuantity;
+        const cartItem = cart.items.find(elem => elem.prodID === _id);
+        if (cartItem) {
+            cartItem.quantity = addedQuantity;
+        }
+        else{
+            cart.items.push({prodID : _id, quantity : addedQuantity});
+        }
+        cart.items = cart.items.filter((elem) => elem.quantity !== 0);
+        await cart.save();
+        res.status(200).send(product);
     } catch (error) {
         res.status(400).send({ "msg": error.message });
     }
@@ -99,4 +146,5 @@ const getProducts = async (req, res) => {
 
 
 
-module.exports = { addAllProducts, getProducts };
+
+module.exports = { addAllProducts, getProducts, getSingleProduct, updateProductData };
