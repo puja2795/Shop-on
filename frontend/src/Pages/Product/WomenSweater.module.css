@@ -1,0 +1,20 @@
+.mainDiv {
+    width: 95%;
+    margin: 20px auto auto auto;
+    border: 1px solid rgb(211, 208, 208);
+    display: flex;
+    gap: 5px;
+}
+
+.filterDiv{
+    margin: 5px;
+    width: 20%;
+    border: 1px solid rgb(179, 176, 176);
+    padding-left: 12px;
+}
+
+.itemDiv{
+    width: 80%;
+    margin: 5px;
+    border: 1px solid rgb(172, 169, 169);
+}
