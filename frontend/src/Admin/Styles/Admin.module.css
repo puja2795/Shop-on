@@ -1,0 +1,16 @@
+.nav_text:hover {
+    border-bottom: 3px solid #f43296;
+}
+
+
+.Box_shadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.Box_shadow {
+    transition: transform 0.5s ease;
+}
+
+.Box_shadow:hover {
+    transform: scale(1.1);
+}
