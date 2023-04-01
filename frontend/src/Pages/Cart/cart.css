@@ -6,7 +6,7 @@
     height: 80px;
     background-color: white;
     /* justify-content: space-around; */
-    /* gap: 20%; */
+   
     align-items: center;
     box-shadow: rgba(253, 123, 123, 0.16) 0px 1px 4px;
 }
@@ -19,29 +19,112 @@
     margin-top: 10%;
   
     justify-content: center;
-    gap:5%;
+    gap:2%;
   
 
 }
 .cart-products{
    
-    border-right: 1px solid gray;
+    border-right: 1px solid#dfdddd;
+}
+.cart-heading{
+    border-right:1px solid gray;
+    font-weight:bold;
+    font-size:25px;
+    padding-right:10px;
+}
+.total-items{
+    padding-left:10px;
+    font-weight:bold;font-size:25px;
+    color :gray
+}
+.price-details{
+    font-family:18px;
+    display:flex;
+    font-Weight:600;
+    justify-content:space-between
 }
 .c-product{
-    width:95%;
-    box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px
-    /* border:"1px solid gray" */
+     width:95%;
+    /* box-shadow:rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px ;
+    border:"1px solid gray" */
+}
+
+.product-upper-part{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+         display: grid;
+          grid-template-columns: 15% 70% 10%;
+           gap: 1%;
+           padding:5% 
+    
+}
+.product-upper-part >div>p{
+ white-space: nowrap;
+ overflow: hidden;
+  text-overflow: ellipsis; 
+  font-weight: 600 
 }
 
 .address{
-    border: 1px solid red;
+ 
     width: 95%;
 
 
 
 
 }
-
+.product-footer{
+   
+       
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+         justify-content: space-between; width: 100%;
+         padding:2%
+}
+.btn-prop{
+    color:#FC4689;
+    font-size:18px;
+    font-weight:600;
+    cursor: pointer;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 .order-summry{
-    border:1px solid red
+    /* border:1px solid red; */
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+   gap: 10px;
+}
+
+.edit{
+ 
+         display: grid;
+          grid-template-columns: 20% 70% ;
+           gap: 1%;
+           padding:5% ;
+          
+}
+
+
+.title{
+    
+    white-space: nowrap;
+    overflow: hidden;
+     text-overflow:ellipsis; 
+     font-weight: 600     
+}
+@media all and (min-width:100px) and (max-width:900px) {
+
+.cart-container{
+
+
+    grid-template-columns: 90%
+
+   
+  
+}
+    
 }
