@@ -1,16 +1,19 @@
-import React from 'react'
-import { Layout } from '../../Components/Container/Layout'
-import { useEffect } from 'react'
+import React from "react";
+import { Layout } from "../../Components/Container/Layout";
+import Navbar from "../../Components/Navbar/Navbar";
+import { Subnav } from "../../Components/Navbar/Subnav";
+import Sidebar from "./Sidebar";
 
 export const AllProduct = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      console.log("loaded");
-    }, 3000)
-  }, [])
   return (
-    <Layout>
-        <div>AllProduct</div>
-    </Layout>
-  )
-}
+    <>
+      <Navbar />
+      <Subnav />
+      <Layout hasSidebar={true} sideBar={<Sidebar />}>
+        <div>
+          <h2></h2>
+        </div>
+      </Layout>
+    </>
+  );
+};
