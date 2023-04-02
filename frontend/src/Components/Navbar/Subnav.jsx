@@ -16,7 +16,6 @@ export const Subnav = () => {
   });
 
   const onSelectCategory = (category) => {
-    console.log(category);
     dispatch(setProductFor(category));
     localStorage.setItem("productFor", productFor);
     navigate("/products");

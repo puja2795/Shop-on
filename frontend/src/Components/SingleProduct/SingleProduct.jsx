@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const SingleProduct = ({ el }) => {
   const navigate = useNavigate();
+  
   return (
     <div
       className={styles["main-div"]}
@@ -37,7 +38,7 @@ const SingleProduct = ({ el }) => {
         <div style={{ display: "flex", height: "30px", gap: "6px" }}>
           <div className={styles.divButton}>
             <Text fontWeight={500} fontSize={"md"}>
-              {el.rating.toFixed(1)}
+              {el?.rating?.toFixed(1)}
             </Text>
             <AiFillStar />
           </div>

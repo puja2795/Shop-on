@@ -5,9 +5,12 @@
 
 .filterDiv{
     width: 25%;
-    height: 84vh;
 }
 
 .childrenDiv {
     width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

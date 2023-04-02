@@ -6,19 +6,34 @@ import { Button, Image, Stack, Heading, Text } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addTocart } from "../../Redux/cartReducer/action";
 
 const SingleProductPage = () => {
+  const [count,setCount]=useState(0)
   const [selected, setSelected] = useState({});
   const prodID = localStorage.getItem("selected_product");
+const dispatch=useDispatch()
+ 
 
-  console.log({ prodID });
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/product/${prodID}`).then((res) => {
-      console.log(res.data);
-      setSelected(res.data);
-    });
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/${prodID}`)
+      .then((res) => {
+        setSelected(res.data);
+      });
   }, []);
+
+  const handleCartPage=()=>{
+    
+dispatch(addTocart({_id:prodID}))
+    setCount(count+1)
+  }
+  if(count==2){
+    return <Navigate to={"/cart"}/>
+  }
 
   return (
     <>
@@ -65,8 +80,9 @@ const SingleProductPage = () => {
                 height={"40px"}
                 variant={"outline"}
                 border={"1px solid black"}
+                onClick={handleCartPage}
               >
-                Add to Cart
+              { count==1? "Go to Cart":"Add to Cart"}
               </Button>
               <Button
                 width={"220px"}

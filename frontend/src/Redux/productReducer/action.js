@@ -35,7 +35,7 @@ export const setFilter = (payload) => {
 export const getProducts = (params) => (dispatch) => {
   dispatch(productRequest());
   axios
-    .get("http://localhost:8080/product", { params })
+    .get(`${process.env.REACT_APP_BACKEND_URL}/product`, { params })
     .then((res) => {
       dispatch(getProductSuccess(res.data));
     })

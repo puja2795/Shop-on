@@ -69,11 +69,11 @@ export const Home = () => {
     }
   };
 
-  console.log(process.env.REACT_APP_databaseURL);
+  console.log("FrontEndURL:", process.env);
 
   const getHomePageData = () => {
     axios
-      .get(`http://localhost:8080/product?limit=200`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product?limit=200`)
       .then((res) => setData(res.data));
   };
 

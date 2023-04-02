@@ -1,14 +1,128 @@
-import { Box, Button, FormControl, FormLabel, Heading, HStack, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Select, Stack, Text, useDisclosure } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Button, FormControl, FormLabel, Heading, HStack, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Select, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import styles from "../Styles/Admin.module.css"
 import { AiFillStar } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
 import { AiFillDelete } from "react-icons/ai"
+import { useDispatch } from "react-redux"
+import { deleteProduct, editProduct, getMensData } from '../../Redux/AminReducer/action'
+
+const initialState = {
+    image: "",
+    title: "",
+    price: "",
+    rating: "",
+    fabric: "",
+    pattern: "",
+    category: "",
+    productFor: ""
+};
+
+
+const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id, productFor }) => {
+
+    console.log('productFor:', productFor);
+
+    const [product, setProduct] = useState(initialState);
+    const dispacth = useDispatch();
+    const toast = useToast();
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setProduct((product) => {
+            return {
+                ...product, [name]: name === "price" ? +value : value
+            }
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (product.image === "" || product.title === "" || product.price == "" || rating == "" || product.fabric === "" || product.pattern === "" || product.category === "" || product.productFor === "") {
+            toast({
+                position: "top",
+                title: `Please add all the details`,
+                status: "warning",
+                isClosable: true,
+                duration: 2000,
+            });
+        }
+        else {
+
+            dispacth(editProduct(product, _id))
+                .then((res) => {
+                    if (productFor === "men") {
+                        dispacth(getMensData({ productFor: "men" }));
+                        toast({
+                            title: "Product Edited successfully",
+                            position: "top",
+                            isClosable: true,
+                            status: "success"
+                        })
+                        onClose();
+                    }
+                    else if (productFor === "women") {
+                        dispacth(getMensData({ productFor: "women" }));
+                        toast({
+                            title: "Product Edited successfully",
+                            position: "top",
+                            isClosable: true,
+                            status: "success"
+                        })
+                        onClose();
+                    }
+                    else if (productFor === "kids") {
+                        dispacth(getMensData({ productFor: "kids" }));
+                        toast({
+                            title: "Product Edited successfully",
+                            position: "top",
+                            isClosable: true,
+                            status: "success"
+                        })
+                        onClose();
+                    }
+                })
+        }
+    }
 
 
 
 
-const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) => {
+    const handleDelete = () => {
+        dispacth(deleteProduct(_id))
+            .then((res) => {
+                if (productFor === "men") {
+                    dispacth(getMensData({ productFor: "men" }));
+                    toast({
+                        title: "Product Deleted successfully",
+                        position: "top",
+                        isClosable: true,
+                        status: "success"
+                    })
+                }
+                else if (productFor === "women") {
+                    dispacth(getMensData({ productFor: "women" }));
+                    toast({
+                        title: "Product Deleted successfully",
+                        position: "top",
+                        isClosable: true,
+                        status: "success"
+                    })
+                }
+                else if (productFor === "kids") {
+                    dispacth(getMensData({ productFor: "kids" }));
+                    toast({
+                        title: "Product Deleted successfully",
+                        position: "top",
+                        isClosable: true,
+                        status: "success"
+                    })
+                }
+            })
+    }
+
 
     const OverlayOne = () => (
         <ModalOverlay
@@ -63,7 +177,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) =
                                     <FormControl id="image" isRequired>
                                         <FormLabel>Image Url</FormLabel>
 
-                                        <Input name='image' type="url" />
+                                        <Input name='image' type="url" value={product.image} onChange={(e) => handleChange(e)} />
                                     </FormControl>
 
                                     <HStack>
@@ -72,7 +186,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) =
                                             <FormControl id="title" isRequired>
                                                 <FormLabel>Title</FormLabel>
 
-                                                <Input name='title' type="text" />
+                                                <Input name='title' type="text" value={product.title} onChange={(e) => handleChange(e)} />
                                             </FormControl>
                                         </Box>
 
@@ -80,7 +194,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) =
                                             <FormControl id="price" isRequired>
                                                 <FormLabel>Price</FormLabel>
 
-                                                <Input name='price' type="number" />
+                                                <Input name='price' type="number" value={product.price} onChange={(e) => handleChange(e)} />
                                             </FormControl>
                                         </Box>
 
@@ -93,7 +207,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) =
                                             <FormControl id="rating" isRequired>
                                                 <FormLabel>Rating</FormLabel>
 
-                                                <Input name='rating' type="number" />
+                                                <Input name='rating' type="number" value={product.rating} onChange={(e) => handleChange(e)} />
                                             </FormControl>
                                         </Box>
 
@@ -101,7 +215,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) =
                                             <FormControl id="fabric" isRequired>
                                                 <FormLabel>Fabric</FormLabel>
 
-                                                <Input name="fabric" type="text" />
+                                                <Input name="fabric" type="text" value={product.fabric} onChange={(e) => handleChange(e)} />
                                             </FormControl>
                                         </Box>
 
@@ -113,21 +227,21 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) =
                                             <FormControl id="pattern" isRequired>
                                                 <FormLabel>Pattern</FormLabel>
 
-                                                <Input name='pattern' type="text" />
+                                                <Input name='pattern' type="text" value={product.pattern} onChange={(e) => handleChange(e)} />
                                             </FormControl>
                                         </Box>
 
                                         <Box>
                                             <FormControl id="category" isRequired>
                                                 <FormLabel>Category</FormLabel>
-                                                <Input name='category' type="text" />
+                                                <Input name='category' type="text" value={product.category} onChange={(e) => handleChange(e)} />
                                             </FormControl>
                                         </Box>
 
                                     </HStack>
 
 
-                                    <Select name='productFor'>
+                                    <Select name='productFor' onChange={(e) => handleChange(e)}>
                                         <option value=''>Product For</option>
                                         <option value='men'>Men</option>
                                         <option value='women'>Women</option>
@@ -144,6 +258,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) =
                                             _hover={{
                                                 bg: 'pink.700',
                                             }}
+                                            onClick={handleSubmit}
                                         >
                                             Submit Changes
                                         </Button>
@@ -153,7 +268,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category }) =
                         </ModalContent>
                     </Modal>
 
-                    <Button mb="10px" leftIcon={<AiFillDelete />} colorScheme={"red"} variant="outline">Delete</Button>
+                    <Button onClick={handleDelete} mb="10px" leftIcon={<AiFillDelete />} colorScheme={"red"} variant="outline">Delete</Button>
                 </Box>
 
             </Stack >
