@@ -19,7 +19,7 @@ import { FcNext } from "react-icons/fc";
 
 export const Home = () => {
   const [data, setData] = useState([]);
-  let limit = 12;
+  let limit = 20;
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0);
   const [perPageProds, setPerPageProds] = useState([]);
@@ -73,7 +73,7 @@ export const Home = () => {
 
   const getHomePageData = () => {
     axios
-      .get(`https://meesho-trial-server.onrender.com/products?productFor=women`)
+      .get(`http://localhost:8080/product?limit=200`)
       .then((res) => setData(res.data));
   };
 
