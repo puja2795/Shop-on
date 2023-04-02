@@ -1,57 +1,79 @@
 import React, { useEffect, useState } from "react";
 import { Stack, Text, Checkbox, Heading, Select } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../../Redux/productReducer/action";
+import { getProducts, setFilter } from "../../Redux/productReducer/action";
 import { useSearchParams } from "react-router-dom";
+import axios from "axios";
+import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
-  const { products, productFor } = useSelector((store) => store.productReducer);
-  const [filters, setFilters] = useState({});
-  const [params, setParams] = useState({ productFor });
+  const { products, productFor, filters } = useSelector(
+    (store) => store.productReducer
+  );
+  const [allProducts, setAllProducts] = useState([]);
+  const [params, setParams] = useState({ productFor, limit: 100 });
   const dispatch = useDispatch();
   let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     dispatch(getProducts(params));
-    setSearchParams(params);
-  }, [productFor, params]);
+    setSearchParams(() => {
+      let thisParams = { ...params };
+      delete thisParams.limit;
+      return { ...thisParams };
+    });
+  }, [params]);
+
+  useEffect(() => {
+    if (productFor) {
+      if (Object.keys(filters?.[productFor]).length === 0) {
+        axios
+          .get("http://localhost:8080/product", {
+            params: { productFor, limit: 100 },
+          })
+          .then((res) => {
+            setAllProducts(res.data);
+          });
+      }
+    }
+    setSearchParams((prev) => ({ ...prev, productFor }));
+    setParams((prev) => ({ productFor, limit: 100 }));
+  }, [productFor]);
 
   useEffect(() => {
     let thisFilter = {
-      category: [],
-      fabric: [],
-      pattern: [],
-      sleeveLength: [],
+      category: {},
+      fabric: {},
+      pattern: {},
+      sleeveLength: {},
     };
-    for (let i = 0; i < products.length; i++) {
-      if (!thisFilter.category.includes(products[i].category)) {
-        thisFilter.category.push(products[i].category);
-      }
-      if (!thisFilter.fabric.includes(products[i].fabric)) {
-        thisFilter.fabric.push(products[i].fabric);
-      }
-      if (!thisFilter.pattern.includes(products[i].pattern)) {
-        thisFilter.pattern.push(products[i].pattern);
-      }
-      if (!thisFilter.sleeveLength.includes(products[i].sleeveLength)) {
-        thisFilter.sleeveLength.push(products[i].sleeveLength);
-      }
+    for (let i = 0; i < allProducts.length; i++) {
+      thisFilter.category[allProducts[i].category] = false;
+      thisFilter.fabric[allProducts[i].fabric] = false;
+      thisFilter.pattern[allProducts[i].pattern] = false;
+      thisFilter.sleeveLength[allProducts[i].sleeveLength] = false;
     }
-    setFilters(thisFilter);
-  }, [products]);
+    dispatch(setFilter(thisFilter));
+  }, [allProducts]);
 
   const onSelectFilter = (e, filter, item) => {
     let thisParams = { ...params };
     if (e.target.checked) {
+      filters[productFor][filter][item] = true;
       if (thisParams[filter] == undefined) {
         thisParams[filter] = [];
       }
       thisParams[filter].push(item);
     } else {
+      filters[productFor][filter][item] = false;
       let itemInd = thisParams[filter].indexOf(item);
       thisParams[filter].splice(itemInd, 1);
     }
     setParams(thisParams);
+  };
+
+  const sortHandler = (e) => {
+    setParams((prev) => ({ ...params, sort: e.target.value }));
   };
 
   return (
@@ -59,9 +81,10 @@ const Sidebar = () => {
       <Select
         placeholder="Sort By: price"
         style={{ border: "1px solid rgb(240, 240, 240)" }}
+        onChange={(e) => sortHandler(e)}
       >
-        <option value="h2l">High to low</option>
-        <option value="l2h">Low to high</option>
+        <option value="desc">High to low</option>
+        <option value="asc">Low to high</option>
       </Select>
       <div
         style={{
@@ -74,27 +97,39 @@ const Sidebar = () => {
         <Text textAlign={"left"} fontWeight={600}>
           FILTERS
         </Text>
-        {Object.keys(filters).map((filter) => {
-          return (
-            <Stack key={filter}>
-              <Text textAlign={"left"} fontSize="lg" fontWeight={"700"}>
-                {filter}
-              </Text>
-              {filters[filter]?.map((item, ind) => {
-                return (
-                  <Checkbox
-                    size="md"
-                    colorScheme="pink"
-                    key={ind}
-                    onChange={(e) => onSelectFilter(e, filter, item)}
-                  >
-                    {item}
-                  </Checkbox>
-                );
-              })}
-            </Stack>
-          );
-        })}
+        {filters &&
+          filters?.[productFor] &&
+          Object.keys(filters?.[productFor]).map((filter) => {
+            return (
+              <div key={filter} className={styles.category}>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <Text textAlign={"left"} fontSize="18px" fontWeight={"600"}>
+                    {filter.charAt(0).toUpperCase() + filter.slice(1)}
+                  </Text>
+                  <p>down</p>
+                </div>
+                <Stack>
+                  {Object.keys(filters?.[productFor]?.[filter]).map(
+                    (item, ind) => {
+                      return (
+                        <Checkbox
+                          size="md"
+                          colorScheme="pink"
+                          key={ind}
+                          isChecked={filters[productFor][filter][item]}
+                          onChange={(e) => onSelectFilter(e, filter, item)}
+                        >
+                          {item}
+                        </Checkbox>
+                      );
+                    }
+                  )}
+                </Stack>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
