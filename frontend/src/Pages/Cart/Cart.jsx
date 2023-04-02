@@ -15,6 +15,11 @@ import { useNavigate } from 'react-router-dom'
 
 export const Cart = () => {
   const [total, setTotal] = useState(0)
+  const [changes,setChanges]=useState(false)
+
+  const handleCartChanges=()=>{
+    setChanges(!changes)
+  }
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -28,7 +33,7 @@ export const Cart = () => {
 
   localStorage.setItem("total", totalP)
 
-  console.log(totalP)
+
   console.log(cartData)
   useEffect(() => {
 
@@ -56,7 +61,7 @@ export const Cart = () => {
 
               {
                 cartData.map((el, i) => (
-                  <CartProductCard key={i} {...el} id={i} />
+                  <CartProductCard key={el._id} {...el}  handleCartChanges={handleCartChanges} />
                 ))
               }
 
@@ -73,7 +78,7 @@ export const Cart = () => {
             </div>}
           </div>
 
-  } 
-  </div>
+      }
+    </div>
   )
 }

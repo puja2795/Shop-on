@@ -69,11 +69,12 @@
 .address{
  
     width: 95%;
-    background: whitesmoke;
+    background: #E7EEFF;
     display: flex;
     flex-direction: column;
 justify-content: flex-start;
-
+padding: 20px;
+border-radius: 10px;
 
 
 }
@@ -92,6 +93,7 @@ justify-content: flex-start;
 }
 .btn-prop{
     color:#FC4689;
+
     font-size:18px;
     font-weight:600;
     cursor: pointer;
