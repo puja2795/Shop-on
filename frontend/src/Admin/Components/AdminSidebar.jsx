@@ -18,6 +18,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Image
 } from '@chakra-ui/react';
 import {
   FiHome,
@@ -31,19 +32,21 @@ import {
 } from 'react-icons/fi';
 // import { IconType } from 'react-icons';
 // import { ReactText } from 'react';
+import { Link as RouterLink } from "react-router-dom"
 
 
 const LinkItems = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: 'Dashboard', icon: FiHome, to: "/dashboard" },
+  { name: 'Store', icon: FiTrendingUp, to: "/store" },
+  { name: 'Add Products', icon: FiCompass, to: "/add-products" },
+  { name: 'Favourites', icon: FiStar, to: "/favourites" },
+  { name: 'Settings', icon: FiSettings, to: "/settings" },
 ];
 
-export default function AdminSidebar({ children }) {
+export default function AdminSidebar({ children, heading }) {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const headings = heading;
 
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -64,7 +67,7 @@ export default function AdminSidebar({ children }) {
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
+      <MobileNav heading={headings} onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
@@ -87,14 +90,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          <Image w="120px" src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png" alt="logo" />
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
+        <RouterLink to={link.to}>
+          <NavItem key={link.name} icon={link.icon}>
+            {link.name}
+          </NavItem>
+        </RouterLink>
       ))}
     </Box>
   );
@@ -158,7 +163,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         fontSize="2xl"
         fontFamily="monospace"
         fontWeight="bold">
-        Logo
+        <Image w="120px" src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png" alt="logo" />
       </Text>
 
       <HStack spacing={{ base: '0', md: '6' }}>

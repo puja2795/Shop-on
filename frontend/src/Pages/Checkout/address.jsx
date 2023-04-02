@@ -3,9 +3,13 @@ import React from 'react'
 
 import '../Cart/cart.css'
 import { CartNavbar } from '../../Components/CartNavbar'
-import { Spacer } from '@chakra-ui/react'
+import { Button, Spacer } from '@chakra-ui/react'
+import { BiRupee } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
 
 export const Address = () => {
+
+  const navigate =useNavigate()
   return (
     <div>
   <CartNavbar/>
@@ -24,14 +28,15 @@ export const Address = () => {
 
   </div>
 
-  <div className='order-summry'>
-<h1>Price Details</h1>
-<div style ={{display:"flex",justifyContent:"space-between"}}><div>Total product Price</div><span>200</span>   </div>
-<hr></hr>
-<div style ={{display:"flex",justifyContent:"space-between",}}><p>Order total</p><p>200</p>   </div>
-<div style={{backgroundColor:"whitesmoke"}}><p>Clicking on ‘Continue’ will not deduct any money</p></div>
-  <button style={{width:"100%",padding:"10px"}}> continue</button>
-  </div>
+  {   <div className='order-summry'>
+<p className='price-details'>Price Details</p>
+<div className='price-details'><p >Total product Price</p><span style ={{display:"flex",alignItems:"center"}} ><BiRupee/>0</span>   </div>
+
+<div style ={{display:"flex",justifyContent:"space-between",}}><p style ={{fontSize:"18px",fontWeight:"600"}}>Order total</p><p style ={{display:"flex",alignItems:"center"}} ><BiRupee/></p>   </div>
+<div style={{backgroundColor:"whitesmoke"}}><p>Clicking on Continue will not deduct any money</p></div>
+  <Button style={{width:"100%",padding:"10px",backgroundColor:"#FC4689",color:"white"}} onClick={()=>navigate("/checkout/payment")}> continue</Button>
+  <img src="https://images.meesho.com/images/marketing/1588578650850.webp"/>
+  </div>}
  
 </div>
 

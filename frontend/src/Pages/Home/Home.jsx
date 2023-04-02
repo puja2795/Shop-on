@@ -13,7 +13,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import { Subnav } from "../../Components/Navbar/Subnav";
 import axios from "axios";
-import { HomeSingleProduct } from "./HomeSingleProduct";
+import SingleProduct from "../../Components/SingleProduct/SingleProduct";
 import { FcPrevious } from "react-icons/fc";
 import { FcNext } from "react-icons/fc";
 
@@ -111,9 +111,13 @@ export const Home = () => {
           ------- Products For You ------
         </Heading>
         <div className={styles.gridDiv}>
-          <Grid templateColumns="repeat(4, 1fr)" gap={6} margin={"20px"}>
+          <Grid
+            templateColumns="repeat(auto-fill, 270px)"
+            gap={6}
+            margin={"20px"}
+          >
             {perPageProds?.map((el) => {
-              return <HomeSingleProduct el={el} />;
+              return <SingleProduct key={el._id} el={el} />;
             })}
           </Grid>
           <Container
