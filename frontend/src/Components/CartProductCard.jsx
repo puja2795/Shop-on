@@ -18,8 +18,8 @@ import {
   import "../Pages/Cart/edit.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { BiRupee } from 'react-icons/bi'
-import { DeleteCartItem } from '../Redux/cartReducer/action'
-export const CartProductCard = ({ image, pattern, price, rating, reviews, title,id,addedQuantity }) => {
+import { DeleteCartItem, addTocart, getCartData } from '../Redux/cartReducer/action'
+export const CartProductCard = ({ image, pattern, price, rating,quantity, reviews, title,_id,addedQuantity,handleCartChanges }) => {
   const [EditData,setEditData]=useState({})
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { isOpen: isDeleteOpen , onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure()
@@ -27,36 +27,58 @@ export const CartProductCard = ({ image, pattern, price, rating, reviews, title,
   const [Qty,setQty]=useState(1)
   const [total,setToatl]=useState(EditData.price)
   const cartData =useSelector((store)=>store.cartReducer.cartData)
+  const prodID = localStorage.getItem("selected_product");
 const dispatch =useDispatch()
 
   const handleQty=(val)=>{
     setQty((pre)=>pre+val)
-    const data  =cartData.find((el,i)=> i==id )
+    const data  =cartData.find((el,i)=> el._id==_id )
     data.addedQuantity= Qty
     setEditData(data)
     setToatl(Qty*data.price)
   }
   
-  const handleEdit=(id)=>{
-  console.log(id)
-  const data  =cartData.find((el,i)=> i==id )
+  const handleEdit=(_id)=>{
+  // console.log(id)
+  const data  =cartData.find((el)=> el._id==_id )
    data.addedQuantity= Qty
   setEditData(data)
 
- 
+
    onOpen()
    
   }
   console.log(EditData)
 
-  const handleDelete=(id)=>{
-    const data  =cartData.find((el,i)=> i==id )
+  const handleDelete=(_id)=>{
+    const data  =cartData.find((el,i)=> el._id==_id )
     // data.addedQuantity= Qty
+    console.log(data)
    setEditData(data)
    onDeleteOpen()
  
-dispatch(DeleteCartItem(id))
-  }
+
+}
+
+const finalEdit=()=>{
+  dispatch(addTocart({_id:_id,addedQuantity:+Qty})).then(()=>{
+    dispatch(getCartData)
+    onClose()
+    
+  })
+}
+
+const finalDelete=(prodID)=>{
+  dispatch(DeleteCartItem(EditData._id)).then(()=>{
+    dispatch(getCartData)
+    onDeleteClose()
+
+  })
+    
+    
+  
+}
+
   return (
     <div className='c-product' >
 
@@ -65,13 +87,13 @@ dispatch(DeleteCartItem(id))
 
         <div>
           <p>{title}</p>
-          <div className='flex'><p>Size:</p><p>Qty: {addedQuantity+1}</p></div>
+          <div className='flex'><p>Size:</p><p>Qty: {quantity}</p></div>
           <div className='flex' ><BiRupee />  <p>{price}</p> </div>
-          <div className='flex'>  <RxCross2 color='#FC4689'/><p className='btn-prop'onClick={()=>handleDelete(id)}>REMOVE</p></div>
+          <div className='flex'>  <RxCross2 color='#FC4689'/><p className='btn-prop'onClick={()=>handleDelete(_id)}>REMOVE</p></div>
         
         </div>
         <div>
-          <p  className='btn-prop' onClick={()=>handleEdit(id)} >EDIT</p>
+          <p  className='btn-prop' onClick={()=>handleEdit(_id)} >EDIT</p>
        
       
       <Modal size="full"isOpen={isOpen} onClose={onClose}>
@@ -99,7 +121,7 @@ dispatch(DeleteCartItem(id))
           </ModalBody >
 
           <ModalFooter>
-            <Button backgroundColor='#FC4689' width={'100%'} mr={3} onClick={onClose}>
+            <Button backgroundColor='#FC4689' width={'100%'} mr={3} onClick={finalEdit}>
               Continue
             </Button>
          
@@ -130,10 +152,10 @@ dispatch(DeleteCartItem(id))
 
           <ModalFooter>
     
-            <p style={{marginRight:"15px",fontSize:"15px"}}className='btn-prop' colorScheme="pink" mr={3} onClick={onDeleteClose}>
+            <p style={{marginRight:"15px",fontSize:"15px"}}className='btn-prop' mr={3} onClick={onDeleteClose}>
               CANCEL
             </p>
-            <p style={{marginLeft:"15px",fontSize:"15px"}} className='btn-prop' onClick={()=>handleDelete(id)}>REMOVE</p>
+            <p style={{marginLeft:"15px",fontSize:"15px"}} className='btn-prop' onClick={()=>finalDelete(prodID)}>REMOVE</p>
           </ModalFooter>
         </ModalContent>
       </Modal>

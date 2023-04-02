@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import '../Cart/cart.css'
 import { CartNavbar } from '../../Components/CartNavbar'
-import { Button, Divider, Spacer, Stack } from '@chakra-ui/react'
+import { Button, Divider, Heading, Spacer, Stack } from '@chakra-ui/react'
 import { BiRupee } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 import { BsTelephone } from 'react-icons/bs'
@@ -43,6 +43,10 @@ export const Address = () => {
     transform: "scale(0.85) translateY(-24px)"
   };
 
+  const handleAdressAndpayment=()=>{
+    setShowform(!showForm)
+    // navigate("/checkout/payment")
+  }
 
   const handleChange = (e) => {
     setUserAddres({ ...userAddress, [e.target.name]: e.target.value })
@@ -94,16 +98,24 @@ export const Address = () => {
       <CartNavbar />
       <div className='cart-container' >
         {showForm == false ? <div className='cart-products'>
-          <div style={{ display: "flex", justifyContent: "space-around" }}> <h3>Select dilevery Address</h3><h3>+ Add New Address</h3></div>
+          <div style={{ display: "flex", justifyContent: "space-around" }}> <h3 className='btn-prop'>Select dilevery Address</h3><h3 className='btn-prop'>+ Add New Address</h3></div>
           <div className='address'>
-            <h2>{userAddress.name}</h2>
-            <p>{userAddress.house_number}</p>
-            <p>{userAddress.area}</p>
-            <p>{userAddress.city}</p>
-            <p>{userAddress.state}</p>
-            <p>{userAddress.pincode}</p>
-            <button>Edit</button>
-            <button>Dilever to this address</button>
+            <Heading size={'md'} className='flex' py={6}>{userAddress.name}</Heading>
+
+           <div className='flex'>
+            <p className='flex'>{userAddress.house_number},</p>
+            <p className='flex'>{userAddress.area},</p>
+            <p className='flex'>{userAddress.city}</p>
+            </div> 
+            <div className='flex' >
+          
+            <p className='flex'>{userAddress.state}-</p>
+            
+            <p className='flex'>{userAddress.pincode}</p>
+            </div>
+           
+            <p className='btn-prop flex' style={{paddingTop:"10px",paddingBottom:"10px"}}>Edit</p>
+            <Button style={{ width: "100%", padding: "15px", backgroundColor: "#FC4689", color: "white" }}>Dilever to this address</Button>
           </div>
 
         </div> :
@@ -177,7 +189,7 @@ export const Address = () => {
 
 
                     </FormControl>
-                    <Button type={'submit'} style={{ width: "100%", padding: "10px", backgroundColor: "#FC4689", color: "white" }} onClick={()=>setShowform(!showForm)}>Save Address & Continue</Button>
+                    <Button type={'submit'} style={{ width: "100%", padding: "10px", backgroundColor: "#FC4689", color: "white" }} onClick={()=>handleAdressAndpayment()}>Save Address & Continue</Button>
                   </Stack>
                 </Box>
               </ChakraProvider>

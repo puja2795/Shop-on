@@ -16,12 +16,18 @@ import AdminLogin from "../Pages/Authentication/AdminLogin";
 import AdminSignup from "../Pages/Authentication/AdminSignup";
 import SingleProductPage from "../Pages/Product/SingleProductPage";
 import { OrderSucessful } from "../Pages/Checkout/OrderSucessful";
+import { PrivateRoutes } from "./PrivateRoutes";
 
 export const MainRoute = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={
+        <PrivateRoutes>
+          <Cart />
+        </PrivateRoutes>
+      
+      } />
       <Route path="/checkout/address" element={<Address />} />
       <Route path="/checkout/payment" element={<Payment />} />
       <Route path="/checkout/orderSuccesful" element={<OrderSucessful />} />

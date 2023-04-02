@@ -15,13 +15,13 @@ import Navbar from "../../Components/Navbar/Navbar";
 import { Subnav } from "../../Components/Navbar/Subnav";
 import { Layout } from "../../Components/Container/Layout";
 import { useNavigate } from "react-router";
-
+import {useLocation } from "react-router-dom";
 const UserLogin = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
+const location =useLocation()
   const handleSubmit = async (event) => {
     event.preventDefault();
     let res = await axios.post(
@@ -36,7 +36,7 @@ const UserLogin = () => {
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("name", res.data.name);
 
-    navigate("/");
+    navigate(location.state,{replace:true});
   };
 
   return (

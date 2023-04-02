@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import '../Cart/cart.css'
 import { CartNavbar } from '../../Components/CartNavbar'
@@ -9,16 +9,24 @@ import { Button, Divider } from '@chakra-ui/react'
 import { BsCashStack, BsFillCheckCircleFill } from 'react-icons/bs'
 import { BiRupee } from 'react-icons/bi'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCartData } from '../../Redux/cartReducer/action'
 export const Payment = () => {
 
   const total = localStorage.getItem("total")
   const[sumaryPage,setSumaryPage]=useState(false)
   const [count,setCount]=useState(0)
 
+  const dispatch =useDispatch()
+
   const cartData =useSelector((store)=>store.cartReducer.cartData)
   console.log(cartData)
 const navigate=useNavigate()
+
+useEffect(() => {
+
+  dispatch(getCartData)
+}, [])
 
   const handleOrderSuccessPAge=()=>{
     setSumaryPage(true)
@@ -45,8 +53,8 @@ const navigate=useNavigate()
 <CartProductCard key={i} {...el} id={i}/>
   ))}
 
-<h3 className='form-title flex'>Delivery Address</h3>
-<div className='c-products'>
+{/* <h3 className='form-title flex'>Delivery Address</h3> */}
+{/* <div className='c-products'>
           <div style={{ display: "flex", justifyContent: "space-around" }}> <h3>Select dilevery Address</h3><h3>+ Add New Address</h3></div>
           <div className='address'>
             <h2>Name</h2>
@@ -58,23 +66,23 @@ const navigate=useNavigate()
             <button>Dilever to this address</button>
           </div>
 
-        </div>
+        </div> */}
 
 
-<h3 className='form-title flex'>Payment Mode</h3>
+{/* <h3 className='form-title flex'>Payment Mode</h3>
 <div className='cart-products'>
    
  
   <div style={{padding:"15px",borderRadius:"5px",display:"flex",width:"80%",alignItems:"center",margin:"auto",backgroundColor:"#d3f4ea",justifyContent:"space-between"}}><p style={{display:"flex",gap:"10px"}}><BsCashStack size="25px"color="#038d63"/>Cash on Delivery </p><BsFillCheckCircleFill size="25px" color="#038d63"/></div>
   
-    </div>
+    </div> */}
   </div>
 :
 
    
    
    <div className='cart-products'>
-    <div style={{display:"flex" ,justifyContent:"space-around"}}> <h3>Payment Method</h3><h3>+ Add New Address</h3></div>
+    <div style={{display:"flex" ,justifyContent:"space-around"}}> <h3 className='btn-prop'>Payment Method</h3 ><h3 className='btn-prop'>+ Add New Address</h3></div>
   <div style={{display:"flex",width:"80%",alignItems:"center",margin:"auto"}}>
 <p style={{width:"40%"}}>PAY IN CASH</p>
 <Divider orientation='horizontal' p={1}/>

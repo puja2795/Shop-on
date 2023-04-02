@@ -10,8 +10,8 @@ export const getCartData = (dispatch) => {
             'Authorization': `Bearer ${localStorage.getItem("token")} ` 
         }
     }
-    axios.get(`https://wild-erin-seal-sari.cyclic.app/cart`,option).then((res) => {
-        console.log(res)
+   return axios.get(`https://wild-erin-seal-sari.cyclic.app/cart`,option).then((res) => {
+        console.log(res.data)
         dispatch(getCartDataSucessAction(res.data))
     }).catch((er) => {
         console.log(er)
@@ -20,7 +20,15 @@ export const getCartData = (dispatch) => {
 }
 
 export const DeleteCartItem = (id) => (dispatch) => {
-    axios.delete(`${process.env.url}/cart${id}`).then((res) => {
+    console.log(id)
+    let options = {
+       
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")} `
+                },
+               
+            }
+    return axios.delete(`https://wild-erin-seal-sari.cyclic.app/cart/${id}`,options).then((res) => {
         console.log(res)
 
     }).catch((er) => {
@@ -29,8 +37,17 @@ export const DeleteCartItem = (id) => (dispatch) => {
 
 }
 
-// export const updateCartItem=(newItem)=>(dispatch)=>{
-//     axios.patch(`https://meesho-trial-server.onrender.com/products?_limit=5/${id}`,newItem).then((res)=>{
+// export const updateCartItem=(id)=>(dispatch)=>{
+//     let options = {
+       
+//         headers: {
+//             'Authorization': `Bearer ${localStorage.getItem("token")} `
+//         },
+       
+//     }
+    
+
+//     axios.patch(`https://wild-erin-seal-sari.cyclic.app/product`,options).then((res)=>{
 //         console.log(res)
 
 //     }).catch((er)=>{
@@ -40,6 +57,7 @@ export const DeleteCartItem = (id) => (dispatch) => {
 // }
 
 export const addTocart = (newItem) =>(dispatch) =>{
+    console.log(newItem)
     let options = {
        
         headers: {
@@ -49,13 +67,14 @@ export const addTocart = (newItem) =>(dispatch) =>{
     }
     
 
-    axios.patch(`https://wild-erin-seal-sari.cyclic.app/product`,newItem, options).then((res) => {
+   return axios.patch(`https://wild-erin-seal-sari.cyclic.app/product`,newItem, options).then((res) => {
         console.log(res)
     }).catch((er) => {
         console.log(er)
     })
 
 }
+
 
 export const updateuserDetails = (useraddress, id) => (dispatch) => {
     axios.patch(`/${id}`, { address: useraddress }).then((res) => {
