@@ -6,10 +6,15 @@ import { Button, Image, Stack, Heading, Text } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const SingleProductPage = () => {
+  const [count,setCount]=useState(0)
   const [selected, setSelected] = useState({});
   const prodID = localStorage.getItem("selected_product");
+
+ 
+
 
   console.log({ prodID });
 
@@ -19,6 +24,14 @@ const SingleProductPage = () => {
       setSelected(res.data);
     });
   }, []);
+
+  const handleCartPage=()=>{
+    
+    setCount(count+1)
+  }
+  if(count==2){
+    return <Navigate to={"/cart"}/>
+  }
 
   return (
     <>
@@ -65,8 +78,9 @@ const SingleProductPage = () => {
                 height={"40px"}
                 variant={"outline"}
                 border={"1px solid black"}
+                onClick={handleCartPage}
               >
-                Add to Cart
+              { count==1? "Go to Cart":"Add to Cart"}
               </Button>
               <Button
                 width={"220px"}

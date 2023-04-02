@@ -35,7 +35,7 @@ export const DeleteCartItem=(id)=>(dispatch)=>{
 // }
 
 export const updateuserDetails=(useraddress,id)=>(dispatch)=>{
-    axios.patch(`https://meesho-trial-server.onrender.com/products?_limit=5/${id}`,{address:useraddress}).then((res)=>{
+    axios.patch(`/${id}`,{address:useraddress}).then((res)=>{
         console.log(res)
       
     }).catch((er)=>{
