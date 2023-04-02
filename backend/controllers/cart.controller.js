@@ -49,7 +49,7 @@ const getCartData = async (req, res) => {
 
 // Delete from cart
 const deleteFromCart = async (req, res) => {
-    const { prodID } = req.params;
+    const  prodID  = req.params.prodID;
     const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, "my_signature");
     try {
