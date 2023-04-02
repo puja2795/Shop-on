@@ -1,7 +1,7 @@
 import styles from "./Subnav.module.css";
 
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import DATA from "./navbardata.json";
 import { setProductFor } from "../../Redux/productReducer/action";
@@ -11,9 +11,14 @@ export const Subnav = () => {
   const [selectedData, setSelectedData] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { productFor } = useSelector((store) => {
+    return store.productReducer;
+  });
 
   const onSelectCategory = (category) => {
+    console.log(category);
     dispatch(setProductFor(category));
+    localStorage.setItem("productFor", productFor);
     navigate("/products");
   };
 
