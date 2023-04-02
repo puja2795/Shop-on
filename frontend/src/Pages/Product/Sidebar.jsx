@@ -190,7 +190,7 @@ const Sidebar = () => {
                   <Text textAlign={"left"} fontSize="18px" fontWeight={"600"}>
                     {filter.charAt(0).toUpperCase() + filter.slice(1)}
                   </Text>
-                  <p>down</p>
+                  {/* <p>down</p> */}
                 </div>
                 <Stack>
                   {Object.keys(filters?.[productFor]?.[filter]).map(

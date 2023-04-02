@@ -11,13 +11,12 @@ const SingleProductPage = () => {
   const [selected, setSelected] = useState({});
   const prodID = localStorage.getItem("selected_product");
 
-  console.log({ prodID });
-
   useEffect(() => {
-    axios.get(`http://localhost:8080/product/${prodID}`).then((res) => {
-      console.log(res.data);
-      setSelected(res.data);
-    });
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/${prodID}`)
+      .then((res) => {
+        setSelected(res.data);
+      });
   }, []);
 
   return (
