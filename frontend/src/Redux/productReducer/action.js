@@ -4,6 +4,7 @@ import {
   GET_PRODUCT_FOR,
   SET_PRODUCT_FOR,
   GET_PRODUCT_SUCCESS,
+  SET_FILTER,
 } from "../actionType";
 import axios from "axios";
 
@@ -27,8 +28,11 @@ export const getProductSuccess = (payload) => {
   return { type: GET_PRODUCT_SUCCESS, payload };
 };
 
+export const setFilter = (payload) => {
+  return { type: SET_FILTER, payload };
+};
+
 export const getProducts = (params) => (dispatch) => {
-  console.log(params);
   dispatch(productRequest());
   axios
     .get("http://localhost:8080/product", { params })
