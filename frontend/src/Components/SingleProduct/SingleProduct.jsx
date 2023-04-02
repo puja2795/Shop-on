@@ -2,10 +2,18 @@ import React from "react";
 import { Heading, Text, Stack, Image } from "@chakra-ui/react";
 import styles from "./SingleProduct.module.css";
 import { AiFillStar } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const SingleProduct = ({ el }) => {
+  const navigate = useNavigate();
   return (
-    <div className={styles["main-div"]}>
+    <div
+      className={styles["main-div"]}
+      onClick={() => {
+        localStorage.setItem("selected_product", el._id);
+        navigate(`/products/${el._id}`);
+      }}
+    >
       <Image src={el.image} className={styles.divImage}></Image>
       <Stack pt={4}>
         <Text
@@ -34,7 +42,7 @@ const SingleProduct = ({ el }) => {
             <AiFillStar />
           </div>
           <Text fontSize={"xs"} color={"gray.400"} pt={1} pb={8}>
-            {el.reviews.split(",")[1]}
+            {el?.reviews?.split(",")[1]}
           </Text>
         </div>
       </Stack>

@@ -15,17 +15,18 @@
     display: grid;
     width:80%;
     margin: auto;
-    grid-template-columns: 45% 30%;
-    margin-top: 10%;
+    grid-template-columns: 50% 30%;
+    margin-top: 8%;
   
     justify-content: center;
     gap:2%;
-  
+  margin-bottom: 10%;
 
 }
 .cart-products{
    
     border-right: 1px solid#dfdddd;
+
 }
 .cart-heading{
     border-right:1px solid gray;
@@ -72,6 +73,12 @@
 
 
 
+}
+
+.form-title{
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 .product-footer{
    
