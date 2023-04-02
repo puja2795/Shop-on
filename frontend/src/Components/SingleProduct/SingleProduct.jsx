@@ -42,7 +42,7 @@ const SingleProduct = ({ el }) => {
             <AiFillStar />
           </div>
           <Text fontSize={"xs"} color={"gray.400"} pt={1} pb={8}>
-            {el.reviews.split(",")[1]}
+            {el?.reviews?.split(",")[1]}
           </Text>
         </div>
       </Stack>
