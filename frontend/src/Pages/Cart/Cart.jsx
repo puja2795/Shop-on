@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import "./cart.css";
-import { CartNavbar } from "../../Components/CartNavbar";
-import { RxDividerVertical } from "react-icons/rx";
-import { CartProductCard } from "../../Components/CartProductCard";
-import { Button, Divider, Heading, Stack, Text, Box } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCartData } from "../../Redux/cartReducer/action";
-import { BiRupee } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import './cart.css'
+import { CartNavbar } from '../../Components/CartNavbar'
+import { RxDividerVertical } from 'react-icons/rx'
+import { CartProductCard } from '../../Components/CartProductCard'
+import { Button, Divider, Heading, Stack, Text ,Box} from '@chakra-ui/react'
+import {useDispatch,useSelector} from "react-redux"
+import { getCartData } from '../../Redux/cartReducer/action'
+import { BiRupee } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
+
+
+
 
 export const Cart = () => {
-
   const [total,setTotal]=useState(0)
   
 const navigate=useNavigate()
@@ -32,19 +34,10 @@ useEffect(()=>{
 
   dispatch(getCartData)
 
-  let totalP = 0;
-  for (let i = 0; i < cartData.length; i++) {
-    totalP = totalP + cartData[i].price;
-  }
 
-  console.log(totalP);
-  console.log(cartData);
-  useEffect(() => {
-    dispatch(getCartData);
-  }, []);
+},[])
   return (
     <div>
-
   <CartNavbar/>{
   cartData.length==0? 
   <div style={{width:"50%",margin:"auto",display:"flex",alignItems:"center",flexDirection:"column",paddingTop:"10%",justifyContent:"center"}}>
@@ -80,6 +73,7 @@ useEffect(()=>{
   </div>}
 </div>
 
-  }  </div>
+  } 
+  </div>
   )
 }
