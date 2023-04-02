@@ -12,7 +12,7 @@ export const LayoutHeading = ({ productFor }) => {
   return (
     <>
       <Text fontSize={"30px"} fontWeight={700} textAlign={"left"}>
-        {productFor.charAt(0).toUpperCase() + productFor.slice(1, 15)}
+        {productFor?.charAt(0).toUpperCase() + productFor?.slice(1, 15)}
       </Text>
       <Text textAlign={"left"}>Showing 1-20 out of 10000 products</Text>
     </>
