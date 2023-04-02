@@ -76,8 +76,15 @@ export const addTocart = (newItem) =>(dispatch) =>{
 }
 
 
-export const updateuserDetails = (useraddress, id) => (dispatch) => {
-    axios.patch(`/${id}`, { address: useraddress }).then((res) => {
+export const updateuserDetails = (useraddress) => (dispatch) => {
+    let options = {
+       
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")} `
+        },
+       
+    }
+    axios.patch(`https://wild-erin-seal-sari.cyclic.app/user/address`, useraddress,options).then((res) => {
         console.log(res)
 
     }).catch((er) => {

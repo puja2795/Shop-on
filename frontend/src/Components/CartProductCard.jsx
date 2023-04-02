@@ -110,7 +110,13 @@ const finalDelete=(prodID)=>{
         <div className='title' >
           <p className='title'>{EditData.title}</p>
           <div className='flex' ><BiRupee /><h3>{EditData.price}</h3></div>
-          <div className='flex'><p>Size:</p><p>Qty:</p> <Button onClick={()=>handleQty(-1)} >-</Button> <Button isDisabled={true}>{Qty}</Button>  <Button onClick={()=>handleQty(1)}>+</Button></div>
+          <div className='flex'>
+            <p>Size:</p>
+            <p>Qty:</p> 
+            <Button onClick={()=>handleQty(-1)} >-</Button>
+            <Button isDisabled={true}>{Qty}</Button>  
+             <Button onClick={()=>handleQty(1)}>+</Button>
+             </div>
          
          
           <div className='flex' style={{justifyContent:"space-between"}} ><h3> Total Price </h3><h3 className='flex'><BiRupee />{EditData.price*Qty}</h3></div>

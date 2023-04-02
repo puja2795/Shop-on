@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import '../Cart/cart.css'
 import { CartNavbar } from '../../Components/CartNavbar'
@@ -44,7 +44,8 @@ export const Address = () => {
   };
 
   const handleAdressAndpayment=()=>{
-    setShowform(!showForm)
+    dispatch(updateuserDetails(userAddress))
+    setShowform(false)
     // navigate("/checkout/payment")
   }
 
@@ -55,9 +56,12 @@ export const Address = () => {
   const handleSubmit = (e) => {
     e.preventDefaults()
     setUserAddres(initAdress)
-    dispatch(updateuserDetails(userAddress))
+    console.log(userAddress)
+  
 
   }
+
+  
   const theme = extendTheme({
     components: {
       Form: {
