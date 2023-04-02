@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import UserCard from "../Components/UserCard";
-import { getMensData, getUsersData } from "../../Redux/AminReducer/action";
+import { deleteUser, getMensData, getUsersData } from "../../Redux/AminReducer/action";
 
 let arr = new Array(10).fill(0);
 
@@ -42,8 +42,10 @@ function Dashboard() {
   const dispatch = useDispatch();
 
 
-  const handleDelete = () => {
-
+  const handleDelete = (_id) => {
+    dispatch(deleteUser(_id)).then((res) => {
+      dispatch(getUsersData())
+    })
   }
 
   useEffect(() => {
@@ -51,8 +53,6 @@ function Dashboard() {
     dispatch(getMensData({}))
   }, []);
 
-  // console.log('userData:', userData)
-  // console.log('store:', store)
 
   return (
     <AdminSidebar heading={"Dashboard"}>
@@ -175,7 +175,8 @@ function Dashboard() {
               alignItems={"center"}
             >
               <Text fontSize={"2xl"}>Total Users</Text>
-              <Text fontSize={"2xl"}>{userData.length}</Text>
+              <Text fontSize={"2xl"}>{userData.length > 0 ?
+                (userData.length) : (0)}</Text>
             </Box>
           </Box>
         </Box>
@@ -208,10 +209,11 @@ function Dashboard() {
                       <Td>{""}</Td>
                       <Td>{""}</Td>
                       <Td>{""}</Td>
+                      <Td>{""}</Td>
                     </Tr>
                   );
                 })}
-              {userData && userData.map((item, index) => {
+              {userData.length > 0 && userData?.map((item, index) => {
                 return (
                   <UserCard
                     key={item._id}
