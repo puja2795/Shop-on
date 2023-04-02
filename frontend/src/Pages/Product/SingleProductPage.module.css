@@ -1,0 +1,9 @@
+.container {
+    height: 80vh;
+    margin-top: -25px;
+    width: 60%;
+    margin-inline: auto;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}

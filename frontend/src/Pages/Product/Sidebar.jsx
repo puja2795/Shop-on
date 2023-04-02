@@ -6,11 +6,120 @@ import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./Sidebar.module.css";
 
+const filters = {
+  men: {
+    category: {
+      "men jeans": false,
+      "men shirts": false,
+      "men trousers": false,
+      "men tshirts": false,
+    },
+    fabric: {
+      Denim: false,
+      Cotton: false,
+      "Cotton Blend": false,
+      Lycra: false,
+      Polycotton: false,
+      Rayon: false,
+      Crepe: false,
+      "Lycra ": false,
+      Polyester: false,
+    },
+    pattern: {
+      Solid: false,
+      "Dyed/Washed": false,
+      "Placement Print": false,
+      Checked: false,
+      Printed: false,
+      Striped: false,
+      "Self-Design": false,
+      Textured: false,
+    },
+    sleeveLength: {
+      "Long Sleeves": false,
+      "Short Sleeves": false,
+      "Three-Quarter Sleeves": false,
+    },
+  },
+  women: {
+    category: {
+      "women dress": false,
+      "women Jumpsuits": false,
+      "women sweaters": false,
+      "women tops": false,
+    },
+    fabric: {
+      Polyester: false,
+      Rayon: false,
+      "Poly Crepe": false,
+      Crepe: false,
+      Georgette: false,
+      Lycra: false,
+      Viscose: false,
+      "Cotton Blend": false,
+      "Poly Georgette": false,
+      Denim: false,
+      Wool: false,
+      Cotton: false,
+      "Cotton Linen": false,
+      Fleece: false,
+      Acrylic: false,
+      Polycotton: false,
+      "Viscose Rayon": false,
+    },
+    pattern: {
+      "Self-Design": false,
+      Printed: false,
+      Solid: false,
+      Colorblocked: false,
+      Striped: false,
+      "Self-Design/Knitted Design": false,
+      Embroidered: false,
+      Chikankari: false,
+    },
+    sleeveLength: {
+      "Short Sleeves": false,
+      Sleeveless: false,
+      "Three-Quarter Sleeves": false,
+      "Long Sleeves": false,
+      Solid: false,
+    },
+  },
+  kids: {
+    category: {
+      "kids dresses": false,
+      "kids rompers": false,
+    },
+    fabric: {
+      Cotton: false,
+      Crepe: false,
+      "Cotton Blend": false,
+      Satin: false,
+      Polycotton: false,
+      Georgette: false,
+      Denim: false,
+      Fleece: false,
+    },
+    pattern: {
+      Printed: false,
+      "Art Silk": false,
+      Solid: false,
+      "Dyed/ Washed": false,
+      Embellished: false,
+      "Self Design": false,
+    },
+    sleeveLength: {
+      Sleeveless: false,
+      "Short Sleeves": false,
+      "Shoulder Straps": false,
+      "Three-Quarter Sleeves": false,
+      "Long Sleeves": false,
+    },
+  },
+};
+
 const Sidebar = () => {
-  const { products, productFor, filters } = useSelector(
-    (store) => store.productReducer
-  );
-  const [allProducts, setAllProducts] = useState([]);
+  const { productFor } = useSelector((store) => store.productReducer);
   const [params, setParams] = useState({ productFor, limit: 100 });
   const dispatch = useDispatch();
   let [searchParams, setSearchParams] = useSearchParams();
@@ -25,36 +134,9 @@ const Sidebar = () => {
   }, [params]);
 
   useEffect(() => {
-    if (productFor) {
-      if (Object.keys(filters?.[productFor]).length === 0) {
-        axios
-          .get("http://localhost:8080/product", {
-            params: { productFor, limit: 100 },
-          })
-          .then((res) => {
-            setAllProducts(res.data);
-          });
-      }
-    }
     setSearchParams((prev) => ({ ...prev, productFor }));
     setParams((prev) => ({ productFor, limit: 100 }));
   }, [productFor]);
-
-  useEffect(() => {
-    let thisFilter = {
-      category: {},
-      fabric: {},
-      pattern: {},
-      sleeveLength: {},
-    };
-    for (let i = 0; i < allProducts.length; i++) {
-      thisFilter.category[allProducts[i].category] = false;
-      thisFilter.fabric[allProducts[i].fabric] = false;
-      thisFilter.pattern[allProducts[i].pattern] = false;
-      thisFilter.sleeveLength[allProducts[i].sleeveLength] = false;
-    }
-    dispatch(setFilter(thisFilter));
-  }, [allProducts]);
 
   const onSelectFilter = (e, filter, item) => {
     let thisParams = { ...params };
