@@ -24,10 +24,21 @@ const getCartData = async (req, res) => {
       const products = await ProductModel.find({ _id: { $in: productIDs } });
   
       // Map the product data to include the quantity from the cart items
+      // const cartItems = cart.items.map((item) => {
+      //   const product = products.find((p) => p._id.toString() === item.productID.toString());
+      //   return { ...product.toObject(), quantity: item.quantity };
+      // });
+
       const cartItems = cart.items.map((item) => {
         const product = products.find((p) => p._id.toString() === item.productID.toString());
-        return { ...product.toObject(), quantity: item.quantity };
+      
+        if (product) {
+          return { ...product.toObject(), quantity: item.quantity };
+        } else {
+          return { productID: item.productID, quantity: item.quantity };
+        }
       });
+      
   
       res.status(200).send(cartItems);
     } catch (error) {

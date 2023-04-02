@@ -59,7 +59,7 @@ const AdminLogin = () => {
                 paddingBottom="50"
                 textAlign="left"
               >
-                User Login
+                Admin Login
               </Text>
               <form onSubmit={handleSubmit}>
                 <Stack spacing={4}>
@@ -92,7 +92,7 @@ const AdminLogin = () => {
                     backgroundColor="rgb(244, 51, 151)"
                     color="white"
                   >
-                    Signup
+                    Login
                   </Button>
                 </Stack>
               </form>

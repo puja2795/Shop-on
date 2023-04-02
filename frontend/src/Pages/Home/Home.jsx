@@ -112,9 +112,11 @@ export const Home = () => {
         </Heading>
         <div className={styles.gridDiv}>
           <Grid
-            templateColumns="repeat(auto-fill, 270px)"
+            templateColumns="repeat(auto-fill, 280px)"
             gap={6}
             margin={"20px"}
+            justifyContent={"center"}
+            alignItems={"center"}
           >
             {perPageProds?.map((el) => {
               return <SingleProduct key={el._id} el={el} />;
