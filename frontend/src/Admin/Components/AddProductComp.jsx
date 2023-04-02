@@ -10,6 +10,7 @@ import {
     Heading,
     useColorModeValue,
     Select,
+    useToast,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -30,9 +31,10 @@ export default function AddProductComp() {
 
 
     const [product, setProduct] = useState(initialState);
-
     const dispacth = useDispatch();
+    const toast = useToast();
 
+    const { image, title, price, rating, fabric, pattern, category, productFor } = product
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -45,9 +47,27 @@ export default function AddProductComp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispacth(postProduct(product));
-        setProduct(initialState);
-        // console.log('product:', product);
+
+        if (image === "" || title === "" || price == "" || rating == "" || fabric === "" || pattern === "" || category === "" || productFor === "") {
+            toast({
+                position: "top",
+                title: `Please add all the details`,
+                status: "warning",
+                isClosable: true,
+                duration: 2000,
+            });
+        }
+        else {
+            dispacth(postProduct(product));
+            toast({
+                title: "Product Added successfully",
+                position: "top",
+                isClosable: true,
+                status:"success"
+            });
+            setProduct(initialState);
+        }
+        // console.log('product:', product
     }
 
 
@@ -157,7 +177,7 @@ export default function AddProductComp() {
                                 }}
                                 onClick={handleSubmit}
                             >
-                                Sign up
+                                Add Product 
                             </Button>
                         </Stack>
                     </Stack>
