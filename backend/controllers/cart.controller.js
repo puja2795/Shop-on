@@ -1,11 +1,12 @@
 const { ProductModel } = require("../model/product.model");
 const { CartModel } = require("../model/cart.model");
+const { UserModel } = require("../model/user.model");
 const jwt = require('jsonwebtoken');
 
 
 // Get cart data
 const getCartData = async (req, res) => {
-    const { prodID } = req.params;
+    const prodID = req.params.prodID;
     const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, "my_signature");
     try {
@@ -33,5 +34,7 @@ const deleteFromCart = async (req, res) => {
     }
 
 }
+
+
 
 module.exports = { getCartData, deleteFromCart };

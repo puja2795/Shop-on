@@ -66,4 +66,33 @@ const getUsers = async (req, res) => {
     }
 }
 
-module.exports = { userSignup, userLogin, getUsers };
+const addOrUpdatedAddress = async (req, res) => {
+    const  address  = req.body;
+    console.log(address)
+    const token = req.headers.authorization.split(" ")[1];
+    const decoded = jwt.verify(token, "my_signature");
+    const user = await UserModel.findOne({ _id: decoded.userID });
+    try {
+      let userAddress;
+      if (address && address._id) {
+        userAddress = await user.address.find((elem) => String(elem._id) == String(address._id) );
+      }
+      if (userAddress) {
+        const updatedAddress = { ...userAddress, ...address };
+        userAddress.set(updatedAddress); // assign updatedAddress to userAddress
+      } else {
+        console.log("Adding new address:", address);
+        user.address.push(address);
+      }
+      console.log("Saving user:", user);
+      await user.save();
+      res.status(200).send(user.address);
+    } catch (error) {
+      console.log("Error:", error);
+      res.status(400).send({ "msg": error.message });
+    }
+  };
+  
+  
+
+module.exports = { userSignup, userLogin, getUsers, addOrUpdatedAddress };

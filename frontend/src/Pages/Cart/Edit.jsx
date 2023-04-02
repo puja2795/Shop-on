@@ -1,13 +1,3 @@
-
- 
 export const Edit = () => {
-
-       
-        
-        return (
-          <>
-
-          </>
-        )
-      }
-  
+  return <></>;
+};
