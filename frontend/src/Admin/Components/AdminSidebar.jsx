@@ -32,7 +32,8 @@ import {
 } from 'react-icons/fi';
 // import { IconType } from 'react-icons';
 // import { ReactText } from 'react';
-import { Link as RouterLink } from "react-router-dom"
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import React from 'react';
 
 
 const LinkItems = [
@@ -44,6 +45,8 @@ const LinkItems = [
 ];
 
 export default function AdminSidebar({ children, heading }) {
+
+ 
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const headings = heading;
@@ -139,6 +142,24 @@ const NavItem = ({ icon, children, ...rest }) => {
 
 
 const MobileNav = ({ onOpen, ...rest }) => {
+
+  const navigate = useNavigate();
+
+  const [adminName , setAdminName] = React.useState(null);
+  const [adminToken, setAdminToken] = React.useState(null);
+
+  React.useEffect(()=>{
+    setAdminName(localStorage.getItem("adminName"))
+    setAdminToken(localStorage.getItem("adminToken"))
+  },[])
+
+  const handleSignout = () => {
+    localStorage.removeItem("adminName");
+    localStorage.removeItem("adminToken");
+
+    navigate("/")
+  }
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -191,7 +212,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2">
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm"> {adminName} </Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
                   </Text>
@@ -208,7 +229,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
               <MenuItem>Settings</MenuItem>
               <MenuItem>Billing</MenuItem>
               <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
+              <MenuItem onClick={handleSignout} >Sign out</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

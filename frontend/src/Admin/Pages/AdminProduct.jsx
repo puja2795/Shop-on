@@ -16,9 +16,7 @@ const AdminProduct = () => {
 
     let arr = new Array(100).fill(0);
 
-    const loading = useSelector((store) => {
-        return store.adminReducer.isLoading
-    });
+
 
     const store = useSelector((store) => {
         return store.adminReducer.mensData
@@ -35,6 +33,10 @@ const AdminProduct = () => {
         dispatch(getMensData(params));
     }, [val]);
 
+
+    const loading = useSelector((store) => {
+        return store.adminReducer.isLoading
+    });
 
     console.log('store:', store);
 

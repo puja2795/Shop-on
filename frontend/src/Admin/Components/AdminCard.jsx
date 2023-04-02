@@ -4,7 +4,7 @@ import styles from "../Styles/Admin.module.css"
 import { AiFillStar } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
 import { AiFillDelete } from "react-icons/ai"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { deleteProduct, editProduct, getMensData } from '../../Redux/AminReducer/action'
 
 const initialState = {
@@ -21,7 +21,11 @@ const initialState = {
 
 const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id, productFor }) => {
 
-    console.log('productFor:', productFor);
+    // console.log('productFor:', productFor);
+
+    const loading = useSelector((store) => {
+        return store.adminReducer.isLoading
+    });
 
     const [product, setProduct] = useState(initialState);
     const dispacth = useDispatch();
@@ -251,7 +255,6 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
 
                                     <Stack spacing={10} pt={2}>
                                         <Button
-                                            loadingText="Submitting"
                                             size="lg"
                                             bg={'pink.500'}
                                             color={'white'}
@@ -260,7 +263,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
                                             }}
                                             onClick={handleSubmit}
                                         >
-                                            Submit Changes
+                                            {loading ? ("Submitting...") : ("Submit Changes")}
                                         </Button>
                                     </Stack>
                                 </Stack>

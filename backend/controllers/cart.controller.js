@@ -33,9 +33,9 @@ const getCartData = async (req, res) => {
         const product = products.find((p) => p._id.toString() === item.productID.toString());
       
         if (product) {
-          return { ...product.toObject(), quantity: item.quantity };
+          return { ...product.toObject(), addedQuantity: item.quantity };
         } else {
-          return { productID: item.productID, quantity: item.quantity };
+          return { productID: item.productID, addedQuantity: item.quantity };
         }
       });
       
@@ -49,7 +49,7 @@ const getCartData = async (req, res) => {
 
 // Delete from cart
 const deleteFromCart = async (req, res) => {
-    const { prodID } = req.params;
+    const  prodID  = req.params.prodID;
     const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, "my_signature");
     try {

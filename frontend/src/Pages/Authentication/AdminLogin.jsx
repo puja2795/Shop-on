@@ -34,8 +34,8 @@ const AdminLogin = () => {
     );
 
     console.log(res.data);
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("name", res.data.name);
+    localStorage.setItem("adminToken", res.data.token);
+    localStorage.setItem("adminName", res.data.name);
 
     navigate("/store?productFor=men");
   };
