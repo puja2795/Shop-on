@@ -22,6 +22,7 @@ import { DeleteCartItem } from '../Redux/cartReducer/action'
 export const CartProductCard = ({ image, pattern, price, rating, reviews, title,id,addedQuantity }) => {
   const [EditData,setEditData]=useState({})
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen: isDeleteOpen , onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure()
 
   const [Qty,setQty]=useState(1)
   const [total,setToatl]=useState(EditData.price)
@@ -49,6 +50,11 @@ const dispatch =useDispatch()
   console.log(EditData)
 
   const handleDelete=(id)=>{
+    const data  =cartData.find((el,i)=> i==id )
+    // data.addedQuantity= Qty
+   setEditData(data)
+   onDeleteOpen()
+ 
 dispatch(DeleteCartItem(id))
   }
   return (
@@ -108,6 +114,32 @@ dispatch(DeleteCartItem(id))
         <p>Suplier: Always Pure Enterprise</p>
         <p>Free Delevery</p>
       </div>
+
+  {/* delete modal */}
+    
+
+      <Modal isCentered={true} isOpen={isDeleteOpen} onClose={onDeleteClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Remove product from cart</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {/* <Lorem count={2} /> */}
+           <p style={{fontSize:"18px"}}> Are you sure you want to remove {EditData.title}</p> 
+          </ModalBody>
+
+          <ModalFooter>
+    
+            <p style={{marginRight:"15px",fontSize:"15px"}}className='btn-prop' colorScheme="pink" mr={3} onClick={onDeleteClose}>
+              CANCEL
+            </p>
+            <p style={{marginLeft:"15px",fontSize:"15px"}} className='btn-prop' onClick={()=>handleDelete(id)}>REMOVE</p>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+  
+
     </div>
+
   )
 }

@@ -27,6 +27,8 @@ const initAdress = {
   state: "",
   pincode: "",
   contact: "",
+  house_number:"",
+  area:""
 
 }
 export const Address = () => {
@@ -94,11 +96,12 @@ export const Address = () => {
         {showForm == false ? <div className='cart-products'>
           <div style={{ display: "flex", justifyContent: "space-around" }}> <h3>Select dilevery Address</h3><h3>+ Add New Address</h3></div>
           <div className='address'>
-            <h2>Name</h2>
-            <p>location</p>
-            <p>state</p>
-            <p>pincode</p>
-            <p>number</p>
+            <h2>{userAddress.name}</h2>
+            <p>{userAddress.house_number}</p>
+            <p>{userAddress.area}</p>
+            <p>{userAddress.city}</p>
+            <p>{userAddress.state}</p>
+            <p>{userAddress.pincode}</p>
             <button>Edit</button>
             <button>Dilever to this address</button>
           </div>

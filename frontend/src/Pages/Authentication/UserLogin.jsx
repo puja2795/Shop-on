@@ -22,7 +22,7 @@ const UserLogin = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     let res = await axios.post(
-      `https://tired-seal-leotard.cyclic.app/user/login`,
+      `https://wild-erin-seal-sari.cyclic.app/user/login`,
       {
         email,
         password,

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const SingleProduct = ({ el }) => {
   const navigate = useNavigate();
+  
   return (
     <div
       className={styles["main-div"]}
