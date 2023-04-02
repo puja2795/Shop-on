@@ -1,9 +1,9 @@
 import { Td, Tr } from "@chakra-ui/react";
 import React from "react";
 
-function UserCard({ index, name, handleDelete, email, _id, address }) {
 
-    console.log('address:', address)
+function UserCard({ index, name, email, _id, address, handleDelete }) {
+
 
     return (
         <Tr>
