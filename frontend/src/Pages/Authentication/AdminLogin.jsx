@@ -14,8 +14,12 @@ import { Box } from "@chakra-ui/react";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Layout } from "../../Components/Container/Layout";
 import { Subnav } from "../../Components/Navbar/Subnav";
+import { useNavigate } from "react-router";
+
 
 const AdminLogin = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -32,6 +36,8 @@ const AdminLogin = () => {
     console.log(res.data);
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("name", res.data.name);
+
+    navigate("/store?productFor=men");
   };
 
   return (

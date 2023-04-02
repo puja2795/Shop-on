@@ -14,8 +14,11 @@ import { Box } from "@chakra-ui/react";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Subnav } from "../../Components/Navbar/Subnav";
 import { Layout } from "../../Components/Container/Layout";
+import { useNavigate } from "react-router";
 
 const UserLogin = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -32,6 +35,8 @@ const UserLogin = () => {
     console.log(res.data);
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("name", res.data.name);
+
+    navigate("/");
   };
 
   return (
@@ -86,7 +91,7 @@ const UserLogin = () => {
                     backgroundColor="rgb(244, 51, 151)"
                     color="white"
                   >
-                    Signup
+                    Login
                   </Button>
                 </Stack>
               </form>

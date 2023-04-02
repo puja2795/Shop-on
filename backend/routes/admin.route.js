@@ -3,8 +3,8 @@ const { editProduct, deleteProduct, deleteUser, addProduct, adminSignup, adminLo
 
 const adminRouter = express.Router();
 
-adminRouter.post("/admin/signup", adminSignup);
-adminRouter.post("/admin/login", adminLogin);
+adminRouter.post("/signup", adminSignup);
+adminRouter.post("/login", adminLogin);
 adminRouter.post("/product", addProduct);
 adminRouter.patch("/product/:prodID", editProduct);
 adminRouter.delete("/product/:prodID", deleteProduct);

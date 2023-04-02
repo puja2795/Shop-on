@@ -13,12 +13,16 @@ import axios from "axios";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Subnav } from "../../Components/Navbar/Subnav";
 import { Layout } from "../../Components/Container/Layout";
+import { useNavigate  } from "react-router";
 
 const UserSignup = () => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [address, setAddress] = React.useState("");
+
+
+  const navigate = useNavigate ();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,9 +35,11 @@ const UserSignup = () => {
         address,
       }
     );
-
+  
     console.log(res.data);
+    navigate("/userLogin");
   };
+  
 
   return (
     <>
