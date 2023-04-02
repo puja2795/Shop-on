@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 
 import './cart.css'
@@ -74,7 +73,7 @@ export const Cart = () => {
             </div>}
           </div>
 
-      }
-    </div>
+  } 
+  </div>
   )
 }
