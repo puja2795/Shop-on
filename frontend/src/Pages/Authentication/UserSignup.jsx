@@ -13,6 +13,7 @@ import axios from "axios";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Subnav } from "../../Components/Navbar/Subnav";
 import { Layout } from "../../Components/Container/Layout";
+import { useNavigate  } from "react-router";
 
 const UserSignup = () => {
   const [name, setName] = React.useState("");
@@ -20,10 +21,13 @@ const UserSignup = () => {
   const [password, setPassword] = React.useState("");
   const [address, setAddress] = React.useState("");
 
+
+  const navigate = useNavigate ();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     let res = await axios.post(
-      `https://tired-seal-leotard.cyclic.app/user/signup`,
+      `https://wild-erin-seal-sari.cyclic.app/user/signup`,
       {
         name,
         email,
@@ -31,9 +35,11 @@ const UserSignup = () => {
         address,
       }
     );
-
+  
     console.log(res.data);
+    navigate("/userLogin");
   };
+  
 
   return (
     <>

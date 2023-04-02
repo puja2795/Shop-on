@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 // Admin Signup
 const adminSignup = async (req, res) => {
     const { name, email, password } = req.body;
+    console.log(req.body)
 
     try {
         const admin = await AdminModel.findOne({ email });
@@ -27,6 +28,7 @@ const adminSignup = async (req, res) => {
             res.status(400).send({ "msg": "Admin already exists. Please login." });
         }
     } catch (error) {
+        console.log(error.message)
         res.status(400).send({ "msg": error.message });
     }
 }

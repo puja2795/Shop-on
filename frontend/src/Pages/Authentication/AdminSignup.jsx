@@ -13,24 +13,28 @@ import axios from "axios";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Subnav } from "../../Components/Navbar/Subnav";
 import { Layout } from "../../Components/Container/Layout";
+import { useNavigate } from "react-router";
 
 const AdminSignup = () => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  const navigate = useNavigate ();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     let res = await axios.post(
-      `https://tired-seal-leotard.cyclic.app/admin/signup`,
+      `https://wild-erin-seal-sari.cyclic.app/admin/signup`,
       {
         name,
         email,
         password,
       }
     );
-
+  
     console.log(res.data);
+    navigate("/adminLogin");
   };
 
   return (
