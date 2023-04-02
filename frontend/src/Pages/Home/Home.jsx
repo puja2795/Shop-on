@@ -25,7 +25,7 @@ export const Home = () => {
   const [perPageProds, setPerPageProds] = useState([]);
   const [showBtns, setShowBtns] = useState([]);
   const [startBtn, setStartBtn] = useState(1);
-  const [endBtn, setEndBtn] = useState(6);
+  const [endBtn, setEndBtn] = useState(7);
 
   const makeListFunc = () => {
     let lis = [];
