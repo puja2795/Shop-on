@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import {FaMobileAlt, FaRegUser} from "react-icons/fa"
 import {BiCart} from "react-icons/bi"
 import { Link } from 'react-router-dom';
+import ProfileMenu from './ProfileMenu';
 
 const Navbar = () => {
   return (
@@ -22,9 +23,10 @@ const Navbar = () => {
           <Text fontSize="17px" fontWeight={500}>Become a Supplier</Text>
         </div>
         <div className={styles["right-item"]}>
-          <div className={styles["icon-div"]}>
+          <div className={styles["icon-div"]} >
             <FaRegUser size={"20px"}/>
-            <Text fontSize="17px" fontWeight={500}>Profile</Text>
+            <ProfileMenu />
+            
           </div>
           <div className={styles["icon-div"]}> 
             <BiCart size={"25px"}/>

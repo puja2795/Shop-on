@@ -52,4 +52,18 @@ const userLogin = async (req, res) => {
     }
 }
 
-module.exports = { userSignup, userLogin };
+const getUsers = async (req, res) => {
+    try {
+        const users = await UserModel.find();
+        if (users.length > 0) {
+            res.status(200).send(users);
+        }
+        else{
+            res.status(200).send({ "msg": "No users found !!" });
+        }
+    } catch (error) {
+        res.status(400).send({ "msg": error.message });
+    }
+}
+
+module.exports = { userSignup, userLogin, getUsers };

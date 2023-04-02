@@ -7,6 +7,9 @@ import { Payment } from '../Pages/Checkout/payment'
 import { Home } from '../Pages/Home/Home'
 import { AllProduct } from '../Pages/Product/AllProduct'
 import { WomenSweater } from '../Pages/Product/WomenSweater'
+import Login from '../Pages/Authentication/Login'
+import Signup from '../Pages/Authentication/Signup'
+import AdminLogin from '../Pages/Authentication/AdminLogin'
 
 export const MainRoute = () => {
   return (
@@ -18,6 +21,10 @@ export const MainRoute = () => {
       <Route path="/products" element={<AllProduct />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path='/womenSweater' element={<WomenSweater />}/>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/adminLogin" element={<AdminLogin />} />
+      
     </Routes>
   )
 }
