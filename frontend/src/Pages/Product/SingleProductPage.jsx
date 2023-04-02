@@ -7,12 +7,14 @@ import { AiFillStar } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addTocart } from "../../Redux/cartReducer/action";
 
 const SingleProductPage = () => {
   const [count,setCount]=useState(0)
   const [selected, setSelected] = useState({});
   const prodID = localStorage.getItem("selected_product");
-
+const dispatch=useDispatch()
  
 
 
@@ -27,6 +29,7 @@ const SingleProductPage = () => {
 
   const handleCartPage=()=>{
     
+dispatch(addTocart({_id:prodID}))
     setCount(count+1)
   }
   if(count==2){

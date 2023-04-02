@@ -69,7 +69,10 @@
 .address{
  
     width: 95%;
-
+    background: whitesmoke;
+    display: flex;
+    flex-direction: column;
+justify-content: flex-start;
 
 
 
