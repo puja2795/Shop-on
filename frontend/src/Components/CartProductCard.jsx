@@ -16,22 +16,40 @@ import {
     useDisclosure
   } from '@chakra-ui/react'
   import "../Pages/Cart/edit.css"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { BiRupee } from 'react-icons/bi'
-export const CartProductCard = ({ image, pattern, price, rating, reviews, title,id }) => {
+import { DeleteCartItem } from '../Redux/cartReducer/action'
+export const CartProductCard = ({ image, pattern, price, rating, reviews, title,id,addedQuantity }) => {
   const [EditData,setEditData]=useState({})
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const [Qty,setQty]=useState(1)
+  const [total,setToatl]=useState(EditData.price)
   const cartData =useSelector((store)=>store.cartReducer.cartData)
-  const handleEdit=(id)=>{
-    console.log(id)
-  const data  =cartData.find((el,i)=> i==id )
+const dispatch =useDispatch()
 
+  const handleQty=(val)=>{
+    setQty((pre)=>pre+val)
+    const data  =cartData.find((el,i)=> i==id )
+    data.addedQuantity= Qty
+    setEditData(data)
+    setToatl(Qty*data.price)
+  }
+  
+  const handleEdit=(id)=>{
+  console.log(id)
+  const data  =cartData.find((el,i)=> i==id )
+   data.addedQuantity= Qty
   setEditData(data)
+
  
    onOpen()
    
+  }
+  console.log(EditData)
+
+  const handleDelete=(id)=>{
+dispatch(DeleteCartItem(id))
   }
   return (
     <div className='c-product' >
@@ -41,9 +59,9 @@ export const CartProductCard = ({ image, pattern, price, rating, reviews, title,
 
         <div>
           <p>{title}</p>
-          <div className='flex'><p>Size:</p><p>Qty:</p></div>
+          <div className='flex'><p>Size:</p><p>Qty: {addedQuantity+1}</p></div>
           <div className='flex' ><BiRupee />  <p>{price}</p> </div>
-          <div className='flex'>  <RxCross2 color='#FC4689'/><p className='btn-prop'>REMOVE</p></div>
+          <div className='flex'>  <RxCross2 color='#FC4689'/><p className='btn-prop'onClick={()=>handleDelete(id)}>REMOVE</p></div>
         
         </div>
         <div>
@@ -64,10 +82,10 @@ export const CartProductCard = ({ image, pattern, price, rating, reviews, title,
         <div className='title' >
           <p className='title'>{EditData.title}</p>
           <div className='flex' ><BiRupee /><h3>{EditData.price}</h3></div>
-          <div className='flex'><p>Size:</p><p>Qty:</p> <Button >-</Button> <Button isDisabled={true}>1</Button>  <Button>+</Button></div>
+          <div className='flex'><p>Size:</p><p>Qty:</p> <Button onClick={()=>handleQty(-1)} >-</Button> <Button isDisabled={true}>{Qty}</Button>  <Button onClick={()=>handleQty(1)}>+</Button></div>
          
          
-          <div className='flex' style={{justifyContent:"space-between"}} ><h3> Total Price </h3><h3 className='flex'><BiRupee />{EditData.price}</h3></div>
+          <div className='flex' style={{justifyContent:"space-between"}} ><h3> Total Price </h3><h3 className='flex'><BiRupee />{EditData.price*Qty}</h3></div>
         </div>
         </div>
       

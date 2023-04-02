@@ -12,6 +12,7 @@ import { Payment } from '../Pages/Checkout/payment'
 import { Home } from '../Pages/Home/Home'
 import { AllProduct } from '../Pages/Product/AllProduct'
 import { WomenSweater } from '../Pages/Product/WomenSweater'
+import { OrderSucessful } from '../Pages/Checkout/OrderSucessful'
 
 export const MainRoute = () => {
   return (
@@ -20,6 +21,7 @@ export const MainRoute = () => {
       <Route path="/cart" element={<Cart />} />
       <Route path="/checkout/address" element={<Address />} />
       <Route path="/checkout/payment" element={<Payment />} />
+      <Route path="/checkout/orderSuccesful" element={<OrderSucessful />} />
       <Route path="/products" element={<AllProduct />} />
 
 
