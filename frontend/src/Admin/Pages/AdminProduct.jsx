@@ -25,11 +25,11 @@ const AdminProduct = () => {
 
     useEffect(() => {
         setSearchParams(params);
-        dispatch(getMensData(params))
+        dispatch(getMensData(params));
     }, [val]);
 
 
-    // console.log('store:', store);
+    console.log('store:', store);
 
 
     return (
@@ -57,7 +57,7 @@ const AdminProduct = () => {
             {/* Show Data */}
             <SimpleGrid mt="20px" columns={{ base: 1, sm: 2, md: 2, lg: 4, xl: 4, "2xl": 4 }} spacing={8} >
                 {store && store.map((el) => (
-                    <Box key={el.image}>
+                    <Box key={el._id}>
                         <AdminCard {...el} />
                     </Box>
                 ))}

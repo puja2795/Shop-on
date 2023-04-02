@@ -1,4 +1,4 @@
-import { ADD_PROD_SUCCESS_ADMIN_SIDE, GET_FAILURE_ADMIN_SIDE, GET_REQUEST_ADMIN_SIDE, GET_SUCCESS_ADMIN_SIDE } from "../actionType"
+import { ADD_PROD_SUCCESS_ADMIN_SIDE, DELETE_PROD_SUCCESS_ADMIN_SIDE, EDIT_PROD_SUCCESS_ADMIN_SIDE, GET_FAILURE_ADMIN_SIDE, GET_REQUEST_ADMIN_SIDE, GET_SUCCESS_ADMIN_SIDE } from "../actionType"
 
 
 
@@ -27,6 +27,15 @@ export const reducer = (state = initialState, { type, payload }) => {
         case ADD_PROD_SUCCESS_ADMIN_SIDE: {
             return { ...state, isLoading: false, isError: false, }
         }
+
+        case EDIT_PROD_SUCCESS_ADMIN_SIDE: {
+            return { ...state, isLoading: false, isError: false, }
+        }
+
+        case DELETE_PROD_SUCCESS_ADMIN_SIDE: {
+            return { ...state, isLoading: false, isError: false, }
+        }
+        
         default: return state
     }
 
