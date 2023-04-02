@@ -23,10 +23,11 @@ const navigate=useNavigate()
 
 let totalP=0
   for(let i=0;i<cartData.length;i++){
-    totalP= totalP+cartData[i].price
+    totalP= totalP+(cartData[i].price*(cartData[i].addedQuantity+1))
+
   }
 
-    
+    localStorage.setItem("total",totalP)
 
 console.log(totalP)
 console.log(cartData)
@@ -38,10 +39,22 @@ useEffect(()=>{
 },[])
   return (
     <div>
-  <CartNavbar/>
+  <CartNavbar/>{
+  cartData.length==0? 
+  <div style={{width:"50%",margin:"auto",display:"flex",alignItems:"center",flexDirection:"column",paddingTop:"10%",justifyContent:"center"}}>
+  <img src="https://images.meesho.com/images/pow/empty-cart.png"/>
+  <Heading size={'md'}> Your cart is empty</Heading>
+  <Button  style ={{color:"#FD6CA5",border:"1px solid #FD6CA5",backgroundColor:"white",margin:"10px"}}onClick={()=>navigate("/")}>View products</Button>
+  </div>
+ : 
+
+
+  
 <div className='cart-container'>
   <div className='cart-products'>
   <div className='flex'> <div className='cart-heading'>Cart</div> <div className='total-items'>{cartData.length} Items</div></div> 
+
+
 {
   cartData.map((el,i)=>(
 <CartProductCard key={i} {...el} id={i}/>
@@ -61,6 +74,6 @@ useEffect(()=>{
   </div>}
 </div>
 
-    </div>
+  }  </div>
   )
 }
