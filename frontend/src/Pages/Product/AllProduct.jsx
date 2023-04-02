@@ -87,7 +87,12 @@ export const AllProduct = () => {
         heading={<LayoutHeading productFor={productFor} />}
       >
         <div>
-          <Grid templateColumns="repeat(auto-fill, 230px)" gap={4}>
+          <Grid
+            templateColumns="repeat(auto-fill, 230px)"
+            gap={4}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
             {perPageProds.map((el) => {
               return <SingleProduct key={el._id} el={el} />;
             })}
