@@ -32,7 +32,11 @@ export const MainRoute = () => {
       <Route path="/checkout/payment" element={<Payment />} />
       <Route path="/checkout/orderSuccesful" element={<OrderSucessful />} />
       <Route path="/products" element={<AllProduct />} />
-      <Route path="/products/:id" element={<SingleProductPage />} />
+      <Route path="/products/:id" element={
+        <PrivateRoutes>
+      <SingleProductPage />
+      </PrivateRoutes>
+      } />
 
       <Route path="/userLogin" element={<UserLogin />} />
       <Route path="/userSignup" element={<UserSignup />} />
