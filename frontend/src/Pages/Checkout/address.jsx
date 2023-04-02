@@ -19,7 +19,8 @@ import {
   Box
 } from "@chakra-ui/react";
 import { updateuserDetails } from '../../Redux/cartReducer/action'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUsersData } from '../../Redux/AminReducer/action'
 
 const initAdress = {
   name: "",
@@ -37,8 +38,12 @@ export const Address = () => {
   const [userAddress, setUserAddres] = useState(initAdress)
   const [showForm, setShowform] = useState(true)
   const navigate = useNavigate()
+  const userData =useSelector((store)=>store.adminReducer.user)
+  // console.log("hi",address)
   const dispatch =useDispatch()
-  console.log(userAddress)
+ 
+
+
   const activeLabelStyles = {
     transform: "scale(0.85) translateY(-24px)"
   };
@@ -60,6 +65,16 @@ export const Address = () => {
   
 
   }
+
+  useEffect(()=>{
+dispatch(getUsersData())
+
+
+
+  },[])
+
+
+  
 
   
   const theme = extendTheme({
@@ -144,7 +159,7 @@ export const Address = () => {
                     </FormControl>
 
                     <FormControl variant="floating" id="first-name" isRequired isInvalid>
-                      <Input onChange={handleChange} value={userAddress.number} name="number" isRequired={true} variant='flushed' placeholder=" " />
+                      <Input onChange={handleChange} value={userAddress.contact} name="contact" isRequired={true} variant='flushed' placeholder=" " />
                       {/* It is important that the Label comes after the Control due to css selectors */}
                       <FormLabel>Phone Number</FormLabel>
                     </FormControl>

@@ -87,7 +87,7 @@ const finalDelete=(prodID)=>{
 
         <div>
           <p>{title}</p>
-          <div className='flex'><p>Size:</p><p>Qty: {addedQuantity+1}</p></div>
+          <div className='flex'><p>Size:</p><p>Qty: {addedQuantity}</p></div>
           <div className='flex' ><BiRupee />  <p>{price}</p> </div>
           <div className='flex'>  <RxCross2 color='#FC4689'/><p className='btn-prop'onClick={()=>handleDelete(_id)}>REMOVE</p></div>
         

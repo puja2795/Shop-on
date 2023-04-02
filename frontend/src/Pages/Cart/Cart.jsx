@@ -27,7 +27,7 @@ export const Cart = () => {
 
   let totalP = 0
   for (let i = 0; i < cartData.length; i++) {
-    totalP = totalP + (cartData[i].price * (cartData[i].addedQuantity + 1))
+    totalP = totalP + (cartData[i].price * (cartData[i].addedQuantity))
 
   }
 

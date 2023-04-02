@@ -28,7 +28,7 @@ const dispatch=useDispatch()
 
   const handleCartPage=()=>{
     
-dispatch(addTocart({_id:prodID}))
+  dispatch(addTocart({_id:prodID,addedQuantity:1}))
     setCount(count+1)
   }
   if(count==2){
