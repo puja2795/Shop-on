@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useSearchParams } from 'react-router-dom';
 import { getMensData } from '../../Redux/AminReducer/action';
 import AdminCard from '../Components/AdminCard';
+import CardSkeleton from '../Components/CardSkeleton';
 import styles from "../Styles/Admin.module.css"
 
 const AdminProduct = () => {
@@ -12,6 +13,12 @@ const AdminProduct = () => {
     const initialState = searchParams.get("productFor");
     const [val, setval] = useState(initialState || "men");
 
+
+    let arr = new Array(100).fill(0);
+
+    const loading = useSelector((store) => {
+        return store.adminReducer.isLoading
+    });
 
     const store = useSelector((store) => {
         return store.adminReducer.mensData
@@ -56,11 +63,16 @@ const AdminProduct = () => {
 
             {/* Show Data */}
             <SimpleGrid mt="20px" columns={{ base: 1, sm: 2, md: 2, lg: 4, xl: 4, "2xl": 4 }} spacing={8} >
-                {store && store.map((el) => (
-                    <Box key={el._id}>
-                        <AdminCard {...el} />
-                    </Box>
+                {loading && arr.map((el, i) => (
+                    <CardSkeleton key={i} />
                 ))}
+
+                {store.map((el) => {
+                    return <Box key={el._id}>
+                        <AdminCard  {...el} />
+                    </Box>
+                })}
+
             </SimpleGrid>
         </Box >
     )
