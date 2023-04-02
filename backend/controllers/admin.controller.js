@@ -3,6 +3,16 @@ const { ProductModel } = require("../model/product.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// Admin Signup
+const adminSignup = async(req,res) => {
+    
+}
+
+// Admin Login 
+const adminLogin = async(req,res) => {
+
+}
+
 // Edit product details
 const editProduct = async (req, res) => {
     // Admin token check
@@ -21,8 +31,6 @@ const editProduct = async (req, res) => {
     }
 };
 
-
-
 // Delete a product
 const deleteProduct = async (req, res) => {
     // Admin token check
@@ -39,7 +47,6 @@ const deleteProduct = async (req, res) => {
     }
 }
 
-
 // Delete a user
 const deleteUser = async (req, res) => {
     // Admin token check
@@ -55,7 +62,6 @@ const deleteUser = async (req, res) => {
         res.status(400).send({ "msg": error.message });
     }
 }
-
 
 
 module.exports = { editProduct, deleteProduct, deleteUser }

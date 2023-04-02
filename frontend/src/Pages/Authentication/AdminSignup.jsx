@@ -10,46 +10,52 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Box } from "@chakra-ui/react";
 
-const AdminLogin = () => {
+const AdminSignup = () => {
+  const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    let res = await axios.post(
-      `https://tired-seal-leotard.cyclic.app/admin/login`,
-      {
-        email,
-        password,
-      }
-    );
+    let res =  await axios.post(`https://tired-seal-leotard.cyclic.app/admin/signup`,{
+        name, email,password
+    })
 
     console.log(res.data);
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("name", res.data.name);
   };
 
   return (
-    <Box  backgroundColor=" rgb(253, 240, 232)"  padding= "50px" >
+    <div style={{  backgroundColor: " rgb(253, 240, 232)" , padding: "50px"}}>
       <Container>
         <Image
           src="https://images.meesho.com/images/marketing/1661417516766.webp"
           width="100%"
           borderRadius="10px"
         />
-        <Container backgroundColor="white" padding="50px">
+        <Container backgroundColor="white" padding="50px" >
           <Text
             fontSize="lg"
             fontWeight="bold"
             paddingBottom="50"
             textAlign="left"
           >
-            User Login
+            Admin Signup
           </Text>
           <form onSubmit={handleSubmit}>
             <Stack spacing={4}>
+              <FormControl isRequired>
+                <Input
+                  type="text"
+                  value={name}
+                  placeholder="Name*"
+                  onChange={(event) => setName(event.target.value)}
+                  borderRadius="0"
+                  border="0"
+                  borderBottom="1px solid"
+                  borderColor="gray.300"
+                />
+              </FormControl>
               <FormControl isRequired>
                 <Input
                   type="email"
@@ -74,22 +80,14 @@ const AdminLogin = () => {
                   borderColor="gray.300"
                 />
               </FormControl>
-              <Button
-                type="submit"
-                backgroundColor="rgb(244, 51, 151)"
-                color="white"
-              >
-                Signup
-              </Button>
+              <Button type="submit" backgroundColor="rgb(244, 51, 151)" color="white" >Signup</Button>
             </Stack>
           </form>
-          <Text>
-            Don't have an account? <Link to="/adminSignup">Signup</Link>
-          </Text>
+          <Text>Already have an account? <Link to="/adminLogin" >Login</Link></Text>
         </Container>
       </Container>
-    </Box>
+    </div>
   );
 };
 
-export default AdminLogin;
+export default AdminSignup;

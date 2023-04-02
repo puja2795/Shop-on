@@ -16,16 +16,23 @@ const ProfileMenu = () => {
         {isOpen && (
           <>
             <MenuItem>
-              <Link to="/login">
+              <Link to="/userLogin">
                 <Text fontSize="17px" fontWeight={500}>
-                  Login
+                  User Login
                 </Text>
               </Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/signup">
+              <Link to="/userSignup">
                 <Text fontSize="17px" fontWeight={500}>
-                  Signup
+                  User Signup
+                </Text>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to="/adminSignup">
+                <Text fontSize="17px" fontWeight={500}>
+                  Admin Signup
                 </Text>
               </Link>
             </MenuItem>

@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const userSignup = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password , location} = req.body;
     try {
         const user = await UserModel.findOne({ email });
         if (!user) {
@@ -13,7 +13,7 @@ const userSignup = async (req, res) => {
                     res.status(400).send({ "msg": err.message });
                 }
                 else {
-                    const newUser = new UserModel({ name, email, password: hash });
+                    const newUser = new UserModel({ name, email, password: hash, location });
                     await newUser.save();
 
                     const newCart = new CartModel({ userID: newUser._id, items: [] });
@@ -38,7 +38,7 @@ const userLogin = async (req, res) => {
         if (user) {
             bcrypt.compare(password, user.password, (err, result) => {
                 if (result) {
-                    res.status(200).send({ "msg": "Login Successful !!", "token": jwt.sign({ "userID": user._id }, "my_signature") });
+                    res.status(200).send({ "msg": "Login Successful !!","name": user.name ,"token": jwt.sign({ "userID": user._id }, "my_signature") });
                 }
                 else {
                     res.status(400).send({ "msg": "Wrong password !!" });
