@@ -1,4 +1,4 @@
-import { ADD_PROD_SUCCESS_ADMIN_SIDE, DELETE_PROD_SUCCESS_ADMIN_SIDE, EDIT_PROD_SUCCESS_ADMIN_SIDE, GET_FAILURE_ADMIN_SIDE, GET_REQUEST_ADMIN_SIDE, GET_SUCCESS_ADMIN_SIDE, GET_SUCCESS_USER_DATA } from "../actionType"
+import { ADD_PROD_SUCCESS_ADMIN_SIDE, DELETE_PROD_SUCCESS_ADMIN_SIDE, DELETE_SUCCESS_USER_DATA, EDIT_PROD_SUCCESS_ADMIN_SIDE, GET_FAILURE_ADMIN_SIDE, GET_REQUEST_ADMIN_SIDE, GET_SUCCESS_ADMIN_SIDE, GET_SUCCESS_USER_DATA } from "../actionType"
 import axios from "axios"
 
 const getReqAdmin = () => {
@@ -46,6 +46,12 @@ const getUserAction = (payload) => {
     return {
         type: GET_SUCCESS_USER_DATA,
         payload
+    }
+}
+
+const deleteUserSuccess = () => {
+    return {
+        type: DELETE_SUCCESS_USER_DATA
     }
 }
 
@@ -122,7 +128,7 @@ export const deleteProduct = (id) => (dispatch) => {
 export const getUsersData = () => (dispatch) => {
 
     dispatch(getReqAdmin());
-    axios.get(`https://wild-erin-seal-sari.cyclic.app/user`)
+    return axios.get(`https://wild-erin-seal-sari.cyclic.app/user`)
         .then((res) => {
             console.log(res.data);
             dispatch(getUserAction(res.data))
@@ -131,4 +137,22 @@ export const getUsersData = () => (dispatch) => {
             console.log('err:', err);
             dispatch(FailureReqAdmin());
         })
+}
+
+
+// Delete User Data
+
+export const deleteUser = (id) => (dispatch) => {
+
+    dispatch(getReqAdmin());
+    return axios
+        .delete(`https://wild-erin-seal-sari.cyclic.app/admin/user/${id}`)
+        .then((res) => {
+            console.log('res:', res.data)
+            dispatch(deleteUserSuccess());
+        })
+        .catch((err) => {
+            console.log('err:', err);
+            dispatch(FailureReqAdmin());
+        });
 }
