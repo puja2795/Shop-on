@@ -24,7 +24,7 @@ export const CartProductCard = ({ image, pattern, price, rating,quantity, review
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { isOpen: isDeleteOpen , onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure()
 
-  const [Qty,setQty]=useState(1)
+  const [Qty,setQty]=useState(addedQuantity)
   const [total,setToatl]=useState(EditData.price)
   const cartData =useSelector((store)=>store.cartReducer.cartData)
   const prodID = localStorage.getItem("selected_product");
@@ -113,8 +113,8 @@ const finalDelete=(prodID)=>{
           <div className='flex'>
             <p>Size:</p>
             <p>Qty:</p> 
-            <Button onClick={()=>handleQty(-1)} >-</Button>
-            <Button isDisabled={true}>{Qty}</Button>  
+            <Button isDisabled={+Qty==1} onClick={()=>handleQty(-1)} >-</Button>
+            <Button isDisabled={true}>{+Qty}</Button>  
              <Button onClick={()=>handleQty(1)}>+</Button>
              </div>
          
