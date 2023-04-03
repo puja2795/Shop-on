@@ -47,7 +47,7 @@ The platform provides tools such as product catalogs, payment and delivery manag
 
 
 ## Contributors
-* [@puja2795b/puja2795]]https://github.com/puja2795
+* [@puja2795b/puja2795](https://github.com/puja2795)
 * [@Kavita13feb/kavita13feb](https://github.com/Kavita13feb/kavita13feb)
 
 
