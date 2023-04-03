@@ -66,6 +66,7 @@ The platform provides tools such as product catalogs, payment and delivery manag
 [![Screenshot-33.png](https://i.postimg.cc/ydZ2TpkT/Screenshot-33.png)](https://postimg.cc/JDRTrq3y)
 [![Screenshot-34.png](https://i.postimg.cc/kXXfJhqh/Screenshot-34.png)](https://postimg.cc/nMgvT2sv)
 ## Login and SignUp Page
+[![Screenshot-39.png](https://i.postimg.cc/P5PbN22X/Screenshot-39.png)](https://postimg.cc/sMCGNPkq)
 [![Screenshot-35.png](https://i.postimg.cc/85mmDL3S/Screenshot-35.png)](https://postimg.cc/LYh13g2C)
 ## Admin Page
 [![Screenshot-36.png](https://i.postimg.cc/0yKGjT3Z/Screenshot-36.png)](https://postimg.cc/VJ10HVzb)
