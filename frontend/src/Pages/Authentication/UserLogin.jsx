@@ -10,12 +10,13 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Box } from "@chakra-ui/react";
+import { Box,Wrap , WrapItem} from "@chakra-ui/react";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Subnav } from "../../Components/Navbar/Subnav";
 import { Layout } from "../../Components/Container/Layout";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
+
 const UserLogin = () => {
   const navigate = useNavigate();
 
