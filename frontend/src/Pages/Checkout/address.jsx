@@ -36,7 +36,7 @@ export const Address = () => {
   const total = localStorage.getItem("total")
 const [dbuserData,setdbUserData]=useState([])
   const [userAddress, setUserAddres] = useState(initAdress)
-  const [showForm, setShowform] = useState(false)
+  const [showForm, setShowform] = useState(true)
   const navigate = useNavigate()
   const userData =useSelector((store)=>store.adminReducer.user)
   console.log("hi",userData)
@@ -120,7 +120,7 @@ dispatch(getUsersData())
     <div>
       <CartNavbar />
       <div className='cart-container' >
-        {dbuserData?
+        {showForm==false?
             <div className='cart-products'>
             <div style={{ display: "flex", justifyContent: "space-around" }}> <h3 className='btn-prop'>Select dilevery Address</h3><h3 className='btn-prop'>+ Add New Address</h3></div>
             <div className='address'>
