@@ -100,7 +100,7 @@ const UserLogin = () => {
                 </Stack>
               </form>
               <Text>
-                Don't have an account? <Link to="/adminSignup">Signup</Link>
+                Don't have an account? <Link to="/userSignup">Signup</Link>
               </Text>
             </Container>
           </Container>
