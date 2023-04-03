@@ -50,7 +50,7 @@ The platform provides tools such as product catalogs, payment and delivery manag
 * [@puja2795b/puja2795](https://github.com/puja2795)
 * [@Kavita13feb/kavita13feb](https://github.com/Kavita13feb/kavita13feb)
 * [@mak-1997/mak-1997](https://github.com/mak-1997)
-* [@UmerAhmad9126/UmerAhmad9126](https://github.com/UmerAhmad9126))
+* [@UmerAhmad9126/UmerAhmad9126](https://github.com/UmerAhmad9126)
 
 
 
