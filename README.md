@@ -1,6 +1,3 @@
-# kaput-chin-6583
-
-
 ## About Meesho
 * Meesho is a social E- commerce platform based in India that allows individuals to start their own online businesses by selling products to their social network. Meesho connects suppliers or manufacturers with resellers who then promote and sell those products through social media platforms like WhatsApp, Facebook, and Instagram.
 
@@ -8,7 +5,7 @@ The platform provides tools such as product catalogs, payment and delivery manag
 
 
 ## Tech Stack 
-##Frontend :-
+## Frontend :-
 * JavaScript 
 * HTML
 * CSS
@@ -53,12 +50,7 @@ The platform provides tools such as product catalogs, payment and delivery manag
 * [@UmerAhmad9126/UmerAhmad9126](https://github.com/UmerAhmad9126)
 
 
-
-
-
-
 ## Website link :-https://frontend-ochre-beta.vercel.app/
-## About SteinField : -
 
 ## Home Page
 [![Screenshot-25.png](https://i.postimg.cc/vZK8mj9Y/Screenshot-25.png)](https://postimg.cc/BjxfYmMk)
