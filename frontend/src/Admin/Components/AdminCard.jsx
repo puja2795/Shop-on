@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, FormLabel, Heading, HStack, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Select, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "../Styles/Admin.module.css"
 import { AiFillStar } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { deleteProduct, editProduct, getMensData } from '../../Redux/AminReducer/action'
 
 const initialState = {
+    _id: "",
     image: "",
     title: "",
     price: "",
@@ -19,7 +20,7 @@ const initialState = {
 };
 
 
-const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id, productFor }) => {
+const AdminCard = ({ image1, title1, price1, rating1, fabric1, pattern1, category1, id, productFor1 }) => {
 
     // console.log('productFor:', productFor);
 
@@ -31,6 +32,20 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
     const dispacth = useDispatch();
     const toast = useToast();
 
+    useEffect(() => {
+        setProduct({
+            ...product,
+            _id: id,
+            image: image1,
+            title: title1,
+            price: price1,
+            rating: rating1,
+            fabric: fabric1,
+            pattern: pattern1,
+            category: category1,
+            productFor: productFor1
+        })
+    }, [])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -44,7 +59,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (product.image === "" || product.title === "" || product.price == "" || rating == "" || product.fabric === "" || product.pattern === "" || product.category === "" || product.productFor === "") {
+        if (product.image === "" || product.title === "" || product.price == "" || product.rating == "" || product.fabric === "" || product.pattern === "" || product.category === "" || product.productFor === "") {
             toast({
                 position: "top",
                 title: `Please add all the details`,
@@ -55,9 +70,9 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
         }
         else {
 
-            dispacth(editProduct(product, _id))
+            dispacth(editProduct(product, id))
                 .then((res) => {
-                    if (productFor === "men") {
+                    if (productFor1 === "men") {
                         dispacth(getMensData({ productFor: "men" }));
                         toast({
                             title: "Product Edited successfully",
@@ -67,7 +82,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
                         })
                         onClose();
                     }
-                    else if (productFor === "women") {
+                    else if (productFor1 === "women") {
                         dispacth(getMensData({ productFor: "women" }));
                         toast({
                             title: "Product Edited successfully",
@@ -77,7 +92,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
                         })
                         onClose();
                     }
-                    else if (productFor === "kids") {
+                    else if (productFor1 === "kids") {
                         dispacth(getMensData({ productFor: "kids" }));
                         toast({
                             title: "Product Edited successfully",
@@ -95,9 +110,9 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
 
 
     const handleDelete = () => {
-        dispacth(deleteProduct(_id))
+        dispacth(deleteProduct(id))
             .then((res) => {
-                if (productFor === "men") {
+                if (productFor1 === "men") {
                     dispacth(getMensData({ productFor: "men" }));
                     toast({
                         title: "Product Deleted successfully",
@@ -106,7 +121,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
                         status: "success"
                     })
                 }
-                else if (productFor === "women") {
+                else if (productFor1 === "women") {
                     dispacth(getMensData({ productFor: "women" }));
                     toast({
                         title: "Product Deleted successfully",
@@ -115,7 +130,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
                         status: "success"
                     })
                 }
-                else if (productFor === "kids") {
+                else if (productFor1 === "kids") {
                     dispacth(getMensData({ productFor: "kids" }));
                     toast({
                         title: "Product Deleted successfully",
@@ -143,22 +158,22 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
         <Box cursor={"pointer"} marginTop={"10px"} className={styles.Box_shadow} borderRadius="5px">
             <Stack>
 
-                <Image margin={"auto"} mt="10px" w="220px" h="220px" src={image}></Image>
+                <Image margin={"auto"} mt="10px" w="220px" h="220px" src={image1}></Image>
 
-                <Text pl="15px" textAlign={"left"} fontSize={'20px'} fontWeight={500}>{title.substring(0, 20)}...</Text>
+                <Text pl="15px" textAlign={"left"} fontSize={'20px'} fontWeight={500}>{title1.substring(0, 20)}...</Text>
 
                 <Box px="15px " display={"flex"} gap="40px" alignItems={"center"}>
-                    <Heading fontSize={"18px"} fontWeight={500}>₹{price}</Heading>
+                    <Heading fontSize={"18px"} fontWeight={500}>₹{price1}</Heading>
                     <Button variant={"link"} className={styles.divButton} colorScheme="green" rightIcon={<AiFillStar />}>
                         <Text fontWeight={500} fontSize={'18px'}>
-                            {rating}
+                            {rating1}
                         </Text>
                     </Button>
                 </Box>
 
-                <Text pl="15px" textAlign={"left"} fontSize={'14px'} fontWeight={500}>Fabric : {fabric}</Text>
-                <Text pl="15px" textAlign={"left"} fontSize={'14px'} fontWeight={500}>Pattern : {pattern}</Text>
-                <Text pl="15px" textAlign={"left"} fontSize={'14px'} fontWeight={500}>Category : {category}</Text>
+                <Text pl="15px" textAlign={"left"} fontSize={'14px'} fontWeight={500}>Fabric : {fabric1}</Text>
+                <Text pl="15px" textAlign={"left"} fontSize={'14px'} fontWeight={500}>Pattern : {pattern1}</Text>
+                <Text pl="15px" textAlign={"left"} fontSize={'14px'} fontWeight={500}>Category : {category1}</Text>
 
                 <Box display={"flex"} justifyContent="space-around">
 
@@ -245,7 +260,7 @@ const AdminCard = ({ image, title, price, rating, fabric, pattern, category, _id
                                     </HStack>
 
 
-                                    <Select name='productFor' onChange={(e) => handleChange(e)}>
+                                    <Select name='productFor' value={product.productFor} onChange={(e) => handleChange(e)}>
                                         <option value=''>Product For</option>
                                         <option value='men'>Men</option>
                                         <option value='women'>Women</option>
