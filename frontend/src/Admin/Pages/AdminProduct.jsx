@@ -71,7 +71,7 @@ const AdminProduct = () => {
 
                 {store.map((el) => {
                     return <Box key={el._id}>
-                        <AdminCard  {...el} />
+                        <AdminCard image1={el.image} title1={el.title} price1={el.price} rating1={el.rating} fabric1={el.fabric} pattern1={el.pattern} category1={el.category} id={el._id} productFor1={el.productFor} />
                     </Box>
                 })}
 
