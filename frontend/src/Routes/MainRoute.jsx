@@ -17,6 +17,7 @@ import AdminSignup from "../Pages/Authentication/AdminSignup";
 import SingleProductPage from "../Pages/Product/SingleProductPage";
 import { OrderSucessful } from "../Pages/Checkout/OrderSucessful";
 import { PrivateRoutes } from "./PrivateRoutes";
+import { Summary } from "../Pages/Checkout/summary";
 
 export const MainRoute = () => {
   return (
@@ -30,6 +31,7 @@ export const MainRoute = () => {
       } />
       <Route path="/checkout/address" element={<Address />} />
       <Route path="/checkout/payment" element={<Payment />} />
+      <Route path="/checkout/summary" element={<Summary />} />
       <Route path="/checkout/orderSuccesful" element={<OrderSucessful />} />
       <Route path="/products" element={<AllProduct />} />
       <Route path="/products/:id" element={

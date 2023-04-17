@@ -20,6 +20,9 @@ export const OrderSucessful = () => {
 
 
   }, [])
+
+
+  
   return (
     <div>
       <Navbar />
@@ -52,7 +55,7 @@ export const OrderSucessful = () => {
           </div>
 
         </div> */}
-          <div style={{ padding: "15px", borderRadius: "5px", display: "flex", width: "80%", alignItems: "center", margin: "auto", backgroundColor: "#d3f4ea", justifyContent: "space-between" }}><p style={{ display: "flex", gap: "10px" }}><BsCashStack size="25px" color="#038d63" />Cash on Delivery </p><BsFillCheckCircleFill size="25px" color="#038d63" /></div>
+          {/* <div style={{ padding: "15px", borderRadius: "5px", display: "flex", width: "80%", alignItems: "center", margin: "auto", backgroundColor: "#d3f4ea", justifyContent: "space-between" }}><p style={{ display: "flex", gap: "10px" }}><BsCashStack size="25px" color="#038d63" />Cash on Delivery </p><BsFillCheckCircleFill size="25px" color="#038d63" /></div> */}
         </div>
 
         {cartData.length > 0 && <div className='order-summry'>

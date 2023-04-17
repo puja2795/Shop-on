@@ -9,15 +9,17 @@ import { BsCashStack, BsFillCheckCircleFill } from "react-icons/bs";
 import { BiRupee } from "react-icons/bi";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCartData } from "../../Redux/cartReducer/action";
-export const Payment = () => {
-  const total = localStorage.getItem("total");
+import { getCartData, orderCartDataSucessAction, orderItems } from "../../Redux/cartReducer/action";
 
+export const Summary = () => {
+  const total = localStorage.getItem("total");
+ 
 
   const dispatch = useDispatch();
 
   const cartData = useSelector((store) => store.cartReducer.cartData);
-  console.log(cartData);
+  const orderData = useSelector((store) => store.cartReducer.orderData);
+  console.log(orderData);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,54 +27,28 @@ export const Payment = () => {
   
   }, []);
 
-  const handleSummaryPAge = () => {
-    navigate("/checkout/summary")
+  const handleOrderSuccessPAge = () => {
+    dispatch(orderItems)
+   
+    navigate("/checkout/orderSuccesful")
   };
-
+ 
   return (
     <div>
       <CartNavbar />
       <div className="cart-container">
-      
-          <div className="cart-products" >
-         
-          <h2 className="btn-prop">
-              Payment Method
-              
-            </h2>
-            <div
-            className="flex"
-              style={{
-                display: "flex",
-                width: "80%",
-                alignItems: "center",
-                margin: "auto",
-              }}
-            >
-                
-              <p style={{ width: "40%" }}>PAY IN CASH</p>
-              <Divider orientation="horizontal" p={1} />
-            </div>
-            <div
-              style={{
-                padding: "15px",
-                borderRadius: "5px",
-                display: "flex",
-                width: "80%",
-                alignItems: "center",
-                margin: "auto",
-                backgroundColor: "#d3f4ea",
-                justifyContent: "space-between",
-              }}
-            >
-              <p style={{ display: "flex", gap: "10px" }}>
-                <BsCashStack size="25px" color="#038d63" />
-                Cash on Delivery{" "}
-              </p>
-              <BsFillCheckCircleFill size="25px" color="#038d63" />
-            </div>
+       
+          <div className="cart-products">
+            <h3 className="form-title flex">Product Details</h3>
+
+            <h2 className="flex" style={{size:"12px",font:"bold"}}> Estimated Delivery by Thursday, 20th Apr</h2>
+            {cartData.map((el, i) => (
+              <CartProductCard key={i} {...el} id={i} />
+            ))}
+
+
           </div>
-        
+         
 
         {
           <div className="order-summry">
@@ -102,10 +78,10 @@ export const Payment = () => {
                 backgroundColor: "#FC4689",
                 color: "white",
               }}
-              onClick={handleSummaryPAge}
+              onClick={handleOrderSuccessPAge}
             >
               {" "}
-          Contine
+            Place Order
             </Button>
             <img src="https://images.meesho.com/images/marketing/1588578650850.webp" />
           </div>

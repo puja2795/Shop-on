@@ -11,22 +11,23 @@ import { Box, Divider, Stack } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 export const CartNavbar = () => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <div className="cart-nav">
       <Link to="/">
-        <div style={{ marginLeft: "15px" }}>
+        <div style={{marginLeft:"20%",marginBottom:"10px"}}>
           <img
-            src="https://th.bing.com/th/id/OIP.jHb2K9iBd6eLtuKBCiRERgHaB3?w=343&h=88&c=7&r=0&o=5&dpr=1.3&pid=1.7"
-            width="40%"
+            src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png"
+            width= "80%"
           />
         </div>
       </Link>
 
-      <Stack direction="row">
+      <Stack direction="row" style={{marginLeft:"20%"}}>
         {location.pathname == "/cart" ? (
+          
           <Bs1Circle className="nav-icon" size={"100px"} color="blue" />
+        
         ) : (
           <BsFillCheckCircleFill
             className="nav-icon"

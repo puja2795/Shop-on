@@ -1,10 +1,22 @@
-import { GET_CARTDATA_SUCCESS } from "../actionType"
+import { GET_CARTDATA_SUCCESS, ORDER_CARTDATA_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "../actionType"
 import axios from "axios"
 export const getCartDataSucessAction = (payload) => {
     return { type: GET_CARTDATA_SUCCESS, payload }
 }
 
+export const getCartDataRequestSucessAction = () => {
+    return { type: PRODUCT_REQUEST }
+}
+export const getCartDataErrorSucessAction = () => {
+    return { type: PRODUCT_FAILURE }
+}
+
+export const orderCartDataSucessAction = () => {
+    return { type: ORDER_CARTDATA_SUCCESS }
+}
 export const getCartData = (dispatch) => {
+
+    dispatch(getCartDataRequestSucessAction())
     let option={
         headers:{
             'Authorization': `Bearer ${localStorage.getItem("token")} ` 
@@ -14,6 +26,7 @@ export const getCartData = (dispatch) => {
         console.log(res.data)
         dispatch(getCartDataSucessAction(res.data))
     }).catch((er) => {
+        dispatch(getCartDataErrorSucessAction())
         console.log(er)
     })
 
@@ -93,4 +106,8 @@ export const updateuserDetails = (useraddress) => (dispatch) => {
 
 }
 
+export const orderItems=(dispatch)=>{
+   return dispatch(orderCartDataSucessAction())
+
+}
 
