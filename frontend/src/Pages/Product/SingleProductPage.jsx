@@ -2,7 +2,7 @@ import styles from "./SingleProductPage.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Subnav } from "../../Components/Navbar/Subnav";
 import { Layout } from "../../Components/Container/Layout";
-import { Button, Image, Stack, Heading, Text } from "@chakra-ui/react";
+import { Button, Image, Stack, Heading, Text, Toast, useToast } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -14,6 +14,7 @@ const SingleProductPage = () => {
   const [count,setCount]=useState(0)
   const [selected, setSelected] = useState({});
   const prodID = localStorage.getItem("selected_product");
+  const toast = useToast();
 const dispatch=useDispatch()
  
 
@@ -28,9 +29,26 @@ const dispatch=useDispatch()
 
   const handleCartPage=()=>{
     
-  dispatch(addTocart({_id:prodID,addedQuantity:1}))
-    setCount(count+1)
+  dispatch(addTocart({_id:prodID,addedQuantity:1})).then(()=>{
+
+    setCount((prv)=>prv+1)
+
+    
+  
+    
+  })
+   
   }
+  if(count==1){
+
+    toast({
+      title: "Product is Added To Cart",
+      status: "success",
+      duration: 7000,
+      isClosable: true,
+    });
+    
+   }
   if(count==2){
     return <Navigate to={"/cart"}/>
   }
@@ -80,6 +98,7 @@ const dispatch=useDispatch()
                 height={"40px"}
                 variant={"outline"}
                 border={"1px solid black"}
+                transform={"0.4s"}
                 onClick={handleCartPage}
               >
               { count==1? "Go to Cart":"Add to Cart"}
