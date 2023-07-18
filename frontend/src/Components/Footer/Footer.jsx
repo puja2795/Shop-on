@@ -93,7 +93,7 @@ import {
             </Stack>
   
             <Stack align={'flex-start'}>
-              <Heading as='h3' size='lg' >Shop Non-Stop on Meesho</Heading>
+              <Heading as='h3' size='lg' >Shop Non-Stop on Shop-on</Heading>
               <Text>Trusted by more than 1 Crore Indians Cash on Delivery | Free Delivery</Text>
               <Box cursor={"pointer"} display={"flex"} gap="10px">
                 <Image href={"https://play.google.com/store/apps/details?id=com.myntra.android"} w="150px" h="42px" src="https://constant.myntassets.com/web/assets/img/80cc455a-92d2-4b5c-a038-7da0d92af33f1539674178924-google_play.png" />

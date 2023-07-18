@@ -9,6 +9,8 @@ import {
 } from "react-icons/bs";
 import { Box, Divider, Stack } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
+import shop_on_logo from '../Images/shop_on_logo.png'
+
 export const CartNavbar = () => {
   const location = useLocation();
 
@@ -17,7 +19,8 @@ export const CartNavbar = () => {
       <Link to="/">
         <div style={{marginLeft:"20%",marginBottom:"10px"}}>
           <img
-            src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png"
+            // src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png"
+            src={shop_on_logo}
             width= "80%"
           />
         </div>

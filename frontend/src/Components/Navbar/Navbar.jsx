@@ -6,15 +6,19 @@ import { FaMobileAlt, FaRegUser } from "react-icons/fa";
 import { BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
+import shop_on_logo from '../../Images/shop_on_logo.png'
 
 const Navbar = () => {
   return (
-    <div className={styles.container}>
-      <div className={styles.logoDiv}>
+    <div className={styles.container}   >
+      <div className={styles.logoDiv} style={{ alignItems: "center"}}>
         <Link to="/">
           <Image
-            h="38px"
-            src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png"
+            // h="38px"
+            // src="https://cdn.hevodata.com/customer/logo/8c76f62bd88177a78bb6e2810a244446.png"
+            src={shop_on_logo}
+            width={'300px'}
+            mixBlendMode={"multiply"}
           />
         </Link>
         <SearchBar />
