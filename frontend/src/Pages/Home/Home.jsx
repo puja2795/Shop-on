@@ -89,9 +89,10 @@ export const Home = () => {
         <div className={styles["main-div"]}>
           <Image
             className={styles.imageClass}
-            src="https://meesho-clone-ashokprjapati.vercel.app/header1.png"
+            // src="https://meesho-clone-ashokprjapati.vercel.app/header1.png"
+            src="https://images-static.nykaa.com/creatives/0a2773dd-95a1-40ff-a93c-64cdd5f704e5/default.jpg?tr=w-1200,cm-pad_resize"
           ></Image>
-          <Heading as="h2" size="2xl">
+          {/* <Heading as="h2" size="2xl">
             Top Categories To Choose From
           </Heading>
           <Image
@@ -105,7 +106,7 @@ export const Home = () => {
           <Image
             className={styles.imageClass}
             src="https://meesho-clone-ashokprjapati.vercel.app/lastheader.png"
-          ></Image>
+          ></Image> */}
         </div>
         <Heading as="h2" size="2xl" pb={10}>
           ------- Products For You ------
