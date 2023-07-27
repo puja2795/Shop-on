@@ -1,0 +1,675 @@
+[
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "View All",
+              "link": ""
+            }
+          ],
+          "subname": "All Women Ethnic"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Sarees",
+              "link": ""
+            },
+            {
+              "item": "Silk Sarees",
+              "link": ""
+            },
+            {
+              "item": "Cotton Silk Sarees",
+              "link": ""
+            },
+            {
+              "item": "Cotton Sarees",
+              "link": ""
+            },
+            {
+              "item": "Georgette Sarees",
+              "link": ""
+            },
+            {
+              "item": "Chiffon Sarees",
+              "link": ""
+            },
+            {
+              "item": "Satin Sarees",
+              "link": ""
+            },
+            {
+              "item": "Embroidered Sarees",
+              "link": ""
+            }
+          ],
+          "subname": "Sarees"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Kurtis",
+              "link": ""
+            },
+            {
+              "item": "Anarkali Kurtis",
+              "link": ""
+            },
+            {
+              "item": "Rayon Kurtis",
+              "link": ""
+            },
+            {
+              "item": "Cotton Kurtis",
+              "link": ""
+            },
+            {
+              "item": "Embroidered Kurtis",
+              "link": ""
+            }
+          ],
+          "subname": "Kurtis"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Kurta Sets",
+              "link": ""
+            }
+          ],
+          "subname": "Kurta Sets"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Suits & Dress Material",
+              "link": ""
+            },
+            {
+              "item": "Cotton Suits",
+              "link": ""
+            },
+            {
+              "item": "Embroidered Suits",
+              "link": ""
+            },
+            {
+              "item": "Chanderi Suits",
+              "link": ""
+            }
+          ],
+          "subname": "Suits & Dress Material"
+        }
+      ]
+      
+    },
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "Blouses",
+              "link": ""
+            },
+            {
+              "item": "Dupattas",
+              "link": ""
+            },
+            {
+              "item": "Lehanga",
+              "link": ""
+            },
+            {
+              "item": "Gown",
+              "link": ""
+            },
+            {
+              "item": "Ethnic Bottomwear",
+              "link": ""
+            }
+          ],
+          "subname": "Other Ethnic"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Tops",
+              "link": ""
+            },
+            {
+              "item": "Dresses",
+              "link": ""
+            },
+            {
+              "item": "Sweaters",
+              "link": ""
+            },
+            {
+              "item": "Jumpsuits",
+              "link": ""
+            }
+          ],
+          "subname": "Topwear"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Jeans",
+              "link": ""
+            },
+            {
+              "item": "Jeggings",
+              "link": ""
+            },
+            {
+              "item": "Palazzos",
+              "link": ""
+            },
+            {
+              "item": "Shorts",
+              "link": ""
+            },
+            {
+              "item": "Skirts",
+              "link": ""
+            }
+          ],
+          "subname": "Bottomwear"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Bra",
+              "link": ""
+            },
+            {
+              "item": "Briefs",
+              "link": ""
+            }
+          ],
+          "subname": "Innerwear"
+        }
+      ],
+      "name": "Women dresses",
+      "key": "women-dresses"
+    },
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "Nightsuits",
+              "link": ""
+            },
+            {
+              "item": "Babydolls",
+              "link": ""
+            }
+          ],
+          "subname": "Sleepwear"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Top Wear",
+              "link": ""
+            },
+            {
+              "item": "Tshirts",
+              "link": ""
+            },
+            {
+              "item": "Shirts",
+              "link": ""
+            }
+          ],
+          "subname": "Top Wear"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Track Pants",
+              "link": ""
+            },
+            {
+              "item": "Jeans",
+              "link": ""
+            },
+            {
+              "item": "Trousers",
+              "link": ""
+            }
+          ],
+          "subname": "Bottom Wear"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Men Accessories",
+              "link": ""
+            },
+            {
+              "item": "Watches",
+              "link": ""
+            },
+            {
+              "item": "Belts",
+              "link": ""
+            },
+            {
+              "item": "Wallets",
+              "link": ""
+            },
+            {
+              "item": "Jewellery",
+              "link": ""
+            },
+            {
+              "item": "Sunglasses",
+              "link": ""
+            },
+            {
+              "item": "Bags",
+              "link": ""
+            }
+          ],
+          "subname": "Men Accessories"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Casual Shoes",
+              "link": ""
+            },
+            {
+              "item": "Sports Shoes",
+              "link": ""
+            },
+            {
+              "item": "Sandals",
+              "link": ""
+            },
+            {
+              "item": "Formal Shoes",
+              "link": ""
+            }
+          ],
+          "subname": "Men Footwear"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Men Kurtas",
+              "link": ""
+            },
+            {
+              "item": "Ethnic Jackets",
+              "link": ""
+            }
+          ],
+          "subname": "Ethnic Wear"
+        }
+      ],
+      "name": "Men",
+      "key": "men-shirts"
+    },
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "All Inner & Sleep Wear",
+              "link": ""
+            },
+            {
+              "item": "Vests",
+              "link": ""
+            }
+          ],
+          "subname": "Inner & Sleep Wear"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Dresses",
+              "link": ""
+            }
+          ],
+          "subname": "Boys & Girls 2+ Years"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Rompers",
+              "link": ""
+            }
+          ],
+          "subname": "Infant 0-2 Years"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Soft Toys",
+              "link": ""
+            },
+            {
+              "item": "Footwear",
+              "link": ""
+            },
+            {
+              "item": "Stationery",
+              "link": ""
+            },
+            {
+              "item": "Watches",
+              "link": ""
+            },
+            {
+              "item": "Bags & Backpacks",
+              "link": ""
+            }
+          ],
+          "subname": "Toys & Accessories"
+        }
+      ],
+      "name": "Kids",
+      "key": "kids dresses"
+    },
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "All Baby Care",
+              "link": ""
+            }
+          ],
+          "subname": "Baby Care"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Bedsheets",
+              "link": ""
+            },
+            {
+              "item": "Doormats",
+              "link": ""
+            },
+            {
+              "item": "Curtains & Sheers",
+              "link": ""
+            },
+            {
+              "item": "Cushions & Cushion Covers",
+              "link": ""
+            },
+            {
+              "item": "Mattress Protectors",
+              "link": ""
+            }
+          ],
+          "subname": "Home Furnishing"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Home Decor",
+              "link": ""
+            },
+            {
+              "item": "Stickers",
+              "link": ""
+            },
+            {
+              "item": "Clocks",
+              "link": ""
+            },
+            {
+              "item": "Showpieces",
+              "link": ""
+            }
+          ],
+          "subname": "Home Decor"
+        }
+      ],
+      "name": "Home & Kitchen"
+    },
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "Kitchen Storage",
+              "link": ""
+            },
+            {
+              "item": "Cookware & Bakeware",
+              "link": ""
+            }
+          ],
+          "subname": "Kitchen & Dining"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Face",
+              "link": ""
+            },
+            {
+              "item": "Eyes",
+              "link": ""
+            },
+            {
+              "item": "Lips",
+              "link": ""
+            },
+            {
+              "item": "Nails",
+              "link": ""
+            }
+          ],
+          "subname": "Make up"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Sanitizers",
+              "link": ""
+            },
+            {
+              "item": "Oral Care",
+              "link": ""
+            },
+            {
+              "item": "Feminine Hygiene",
+              "link": ""
+            }
+          ],
+          "subname": "Wellness"
+        }
+      ],
+      "name": "Beauty & Health"
+    },
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "Deodorants",
+              "link": ""
+            }
+          ],
+          "subname": "Skincare"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Jewellery Set",
+              "link": ""
+            },
+            {
+              "item": "Earrings",
+              "link": ""
+            },
+            {
+              "item": "Mangalsutras",
+              "link": ""
+            },
+            {
+              "item": "Studs",
+              "link": ""
+            },
+            {
+              "item": "Bangles",
+              "link": ""
+            },
+            {
+              "item": "Necklaces",
+              "link": ""
+            },
+            {
+              "item": "Rings",
+              "link": ""
+            },
+            {
+              "item": "Anklets",
+              "link": ""
+            }
+          ],
+          "subname": "Jewellery"
+        }
+      ],
+      "name": "Jewellary & Accessories"
+    },
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "Bags",
+              "link": ""
+            },
+            {
+              "item": "Watches",
+              "link": ""
+            },
+            {
+              "item": "Hair Accessories",
+              "link": ""
+            },
+            {
+              "item": "Sunglasses",
+              "link": ""
+            },
+            {
+              "item": "Socks",
+              "link": ""
+            }
+          ],
+          "subname": "Women Accessory"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Women Bags",
+              "link": ""
+            },
+            {
+              "item": "Handbags",
+              "link": ""
+            },
+            {
+              "item": "Clutches",
+              "link": ""
+            },
+            {
+              "item": "Slingbags",
+              "link": ""
+            }
+          ],
+          "subname": "Women Bags"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Men Bags",
+              "link": ""
+            },
+            {
+              "item": "Men Wallets",
+              "link": ""
+            }
+          ],
+          "subname": "Men Bags"
+        },
+        {
+          "subitems": [
+            {
+              "item": "Sports Shoes",
+              "link": ""
+            },
+            {
+              "item": "Casual Shoes",
+              "link": ""
+            },
+            {
+              "item": "Formal Shoes",
+              "link": ""
+            },
+            {
+              "item": "Sandals",
+              "link": ""
+            }
+          ],
+          "subname": "Men Footwear"
+        }
+      ],
+      "name": "Bags & Footware"
+    },
+    {
+      "items": [
+        {
+          "subitems": [
+            {
+              "item": "Flats",
+              "link": ""
+            },
+            {
+              "item": "Bellies",
+              "link": ""
+            },
+            {
+              "item": "Juttis",
+              "link": ""
+            }
+          ],
+          "subname": "Women Footwear"
+        },
+        {
+          "subitems": [
+            {
+              "item": "All Mobile & Accessories",
+              "link": ""
+            },
+            {
+              "item": "Smartwatches",
+              "link": ""
+            },
+            {
+              "item": "Mobile Holders",
+              "link": ""
+            },
+            {
+              "item": "Mobile cases and covers",
+              "link": ""
+            }
+          ],
+          "subname": "Mobile & Accessories"
+        }
+      ],
+      "name": "Electronics"
+    }
+  ]
